@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app.apps.AppConfig'
+    'backend.apps.BackendConfig'
 ]
 
 MIDDLEWARE = [
@@ -79,7 +79,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME':'wcpm',
         'USER': 'root',
-        'PASSWORD': 'Zopen168',
+        'PASSWORD': 'Zopen2013',
         'HOST': '',
         'PORT': '3306',
     }

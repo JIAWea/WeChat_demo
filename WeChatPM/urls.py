@@ -16,8 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
+from backend.views import acount
+from backend.views import home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # url(r'')
+    url(r'login$',acount.ac_login,name='login'),
+    url(r'register$',acount.ac_register,name='register'),
+    url(r'index$',home.index,name='index'),
+    url(r'articles$',home.articles_list,name='articles_list'),
+    url(r'articles/add$',home.articles_add,name='articles_add'),
+    url(r'articles/edit/(?P<aid>(\d+))$',home.articles_edit),
+    url(r'articles/delete/(?P<aid>(\d+))$',home.articles_delete),
 ]

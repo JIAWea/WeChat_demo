@@ -1,0 +1,30 @@
+{% extends 'base/index.html' %}
+{% block title %}
+    <title>文章管理</title>
+{% endblock %}
+
+{% block page-content %}
+    <div>
+        <table class="table table-striped">
+            <theard>
+                <tr>
+                    <th>id</th>
+                    <th>文章名称</th>
+                    <th>操作</th>
+                </tr>
+            </theard>
+            <tbody>
+                {% for article in article_list %}
+                    <tr>
+                        <td>{{ article.id }}</td>
+                        <td>{{ article.title }}</td>
+                        <td>
+                            <a href="/articles/edit/{{ article.id }}">修 改</a> |
+                            <a href="/articles/delete/{{ article.id }}">删 除</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
