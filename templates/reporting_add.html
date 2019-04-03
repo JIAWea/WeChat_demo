@@ -1,0 +1,37 @@
+{% extends 'base/index.html' %}
+{% block title %}
+    <title>报装添加</title>
+{% endblock %}
+
+{% block page-content %}
+    <div>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>报装类型</label>
+                {{ obj.type }}
+                <p style="color: red;">{{ obj.type.errors.0 }}</p>
+            </div>
+            <div class="form-group">
+                <label>报装人</label>
+                {{ obj.user }}
+                <p style="color: red;">{{ obj.user.errors.0 }}</p>
+            </div>
+            <div class="form-group">
+                <label>备注</label>
+                {{ obj.remark }}
+                <p style="color: red;">{{ obj.remark.errors.0 }}</p>
+            </div>
+            <div class="form-group">
+                <label>状态</label>
+                {{ obj.status }}
+                <p style="color: red;">{{ obj.status.errors.0 }}</p>
+            </div>
+            <input type="submit" class="btn btn-primary pull-right" value="提交" />
+        </form>
+    </div>
+{% endblock %}
+
+{% block extra-bottom-js %}
+
+{% endblock %}

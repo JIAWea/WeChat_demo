@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('title', models.CharField(max_length=32, verbose_name='标题')),
                 ('centent', models.TextField(verbose_name='内容')),
-                ('create_time', models.DateTimeField(auto_now_add=True, verbose_name='创建时间')),
+                ('createtime', models.DateTimeField(auto_now_add=True, verbose_name='创建时间')),
             ],
             options={
                 'verbose_name_plural': '文章表',

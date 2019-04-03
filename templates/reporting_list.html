@@ -1,0 +1,38 @@
+{% extends 'base/index.html' %}
+{% block title %}
+    <title>文章管理</title>
+{% endblock %}
+
+{% block page-content %}
+    <div>
+        <table class="table table-striped">
+            <theard>
+                <tr>
+                    <th>id</th>
+                    <th>报装类型</th>
+                    <th>报装人</th>
+                    <th>备注</th>
+                    <th>创建时间</th>
+                    <th>状态</th>
+                    <th>管理</th>
+                </tr>
+            </theard>
+            <tbody>
+                {% for reporting in reporting_all %}
+                    <tr>
+                        <td>{{ reporting.id }}</td>
+                        <td>{{ reporting.type }}</td>
+                        <td>{{ reporting.user }}</td>
+                        <td>{{ reporting.remark }}</td>
+                        <td>{{ reporting.createtime }}</td>
+                        <td>{{ reporting.get_status_display }}</td>
+                        <td>
+                            <a href="/reporting/edit/{{ reporting.id }}">修 改</a> |
+                            <a href="/reporting/delete/{{ reporting.id }}">删 除</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
