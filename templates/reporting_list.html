@@ -3,6 +3,13 @@
     <title>文章管理</title>
 {% endblock %}
 
+{% block breadcrumb %}
+    <ol class="breadcrumb" style="font-size: 18px">
+        <li><a href="{% url 'index' %}">首页</a></li>
+        <li><a style="color: grey;" href="javascript:;">报装管理</a></li>
+    </ol>
+{% endblock %}
+
 {% block page-content %}
     <div>
         <table class="table table-striped">

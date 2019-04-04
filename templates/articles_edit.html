@@ -3,6 +3,14 @@
     <title>文章修改</title>
 {% endblock %}
 
+{% block breadcrumb %}
+    <ol class="breadcrumb" style="font-size: 18px">
+        <li class=""><a href="{% url 'index' %}">首页</a></li>
+        <li class=""><a href="{% url 'articles_list' %}">文章管理</a></li>
+        <li><a style="color: grey;" href="javascript:;">文章修改</a></li>
+    </ol>
+{% endblock %}
+
 {% block page-content %}
     <div>
         <form method="post" action="/articles/edit/{{ aid }}">
@@ -47,18 +55,10 @@
         KindEditor.ready(function(K) {
                 editor = K.create('#editor_id',{
                     resizeType:0,           //是否能改变宽度和长度
-                    //filterMode: true,     //是否过滤标签
                     width : '100%',
                     height:'300px',
-                    items:[
-        'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
-        'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image', 'multiimage',
-        'flash', 'media', 'insertfile', 'table', 'hr', 'emoticons', 'baidumap', 'pagebreak',
-        'anchor', 'link', 'unlink', '|'],      //编辑框的功能栏
                     uploadJson:'/submitComment',
-                    //htmlTags :[]      //自定义不需要过滤标签
                 });
         });
-
     </script>
 {% endblock %}

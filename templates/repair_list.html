@@ -1,0 +1,49 @@
+{% extends 'base/index.html' %}
+{% block title %}
+    <title>报修管理</title>
+{% endblock %}
+
+{% block breadcrumb %}
+    <ol class="breadcrumb" style="font-size: 18px">
+        <li><a href="{% url 'index' %}">首页</a></li>
+        <li><a style="color: grey;" href="javascript:;">报修管理</a></li>
+    </ol>
+{% endblock %}
+
+{% block page-content %}
+    <div>
+        <table class="table table-striped">
+            <theard>
+                <tr>
+                    <th>id</th>
+                    <th>报修类型</th>
+                    <th>报修人</th>
+                    <th>报修详情</th>
+                    <th>图片</th>
+                    <th>创建时间</th>
+                    <th>紧急程度</th>
+                    <th>状态</th>
+                    <th>管理</th>
+                </tr>
+            </theard>
+            <tbody>
+                {% for repair in repair_all %}
+                    <tr>
+                        <td>{{ repair.id }}</td>
+                        <td>{{ repair.type }}</td>
+                        <td>{{ repair.user }}</td>
+                        <td>{{ repair.content }}</td>
+                        <td>{{ repair.img }}</td>
+                        <td>{{ repair.createtime }}</td>
+                        <td>{{ repair.get_level_display }}</td>
+                        <td>{{ repair.get_status_display }}</td>
+                        <td>
+                            <a href="/repair/edit/{{ repair.id }}">修 改</a> |
+                            <a href="/repair/delete/{{ repair.id }}">删 除</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

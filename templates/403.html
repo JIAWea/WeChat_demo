@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Tell the browser to be responsive to screen width -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<!-- Favicon icon -->
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+
+    <title>电子文书系统</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="static/css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="static/css/helper.css" rel="stylesheet">
+    <link href="static/css/style.css" rel="stylesheet">
+    <link href="static/css/base.css" rel="stylesheet">
+
+</head>
+
+<body class="fix-header fix-sidebar">
+
+<!-- Preloader - style you can find in spinners.css -->
+<div class="preloader">
+    <svg class="circular" viewBox="25 25 50 50">
+        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+    </svg>
+</div>
+
+<!-- Main wrapper  -->
+<div class="error-page" id="wrapper">
+    <div class="error-box">
+        <div class="error-body text-center">
+            <h1>403</h1>
+            <h3 class="text-uppercase">您没有访问/操作权限! </h3>
+            <p class="text-muted m-t-30 m-b-30">请联系网站管理员或重新<a href="#" id="login" class="btn-link">登录</a></p>
+            <a class="btn btn-info btn-rounded waves-effect waves-light m-b-40" id="a-go-back"
+               href="index.html">返回首页</a>
+        </div>
+        <!--<footer class="footer text-center copyright">&copy; 广州润普</footer>-->
+    </div>
+</div>
+<!-- End Wrapper -->
+<!-- All Jquery -->
+<script src="static/js/lib/jquery/jquery.min.js"></script>
+<!-- Bootstrap tether Core JavaScript -->
+<script src="static/js/lib/bootstrap/js/popper.min.js"></script>
+<script src="static/js/lib/bootstrap/js/bootstrap.min.js"></script>
+<!-- slimscrollbar scrollbar JavaScript -->
+<script src="static/js/jquery.slimscroll.js"></script>
+<!--Menu sidebar -->
+<script src="static/js/sidebarmenu.js"></script>
+<!--stickey kit -->
+<script src="static/js/lib/sticky-kit-master/dist/sticky-kit.min.js"></script>
+<!--Custom JavaScript -->
+<script src="static/js/custom.min.js"></script>
+<!--js-url-->
+<script src="static/js/lib/js-url/url.min.js"></script>
+<!--urls & api-->
+<script src="static/js/common/urls.js"></script>
+
+</body>
+<script>
+    $(function () {
+        var loginFunc = page.common.login;
+        $('#login').attr('href', loginFunc());
+    });
+</script>
+</html>

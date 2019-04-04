@@ -3,6 +3,14 @@
     <title>报装添加</title>
 {% endblock %}
 
+{% block breadcrumb %}
+    <ol class="breadcrumb" style="font-size: 18px">
+        <li class=""><a href="{% url 'index' %}">首页</a></li>
+        <li class=""><a href="{% url 'reporting_list' %}">报装管理</a></li>
+        <li><a style="color: grey;" href="javascript:;">报装添加</a></li>
+    </ol>
+{% endblock %}
+
 {% block page-content %}
     <div>
         <form method="post">
