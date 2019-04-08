@@ -16,19 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url,include
-from backend.views import acount
-from backend.views import home
+from api.views import userinfo
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    url(r'login',acount.ac_login,name='login'),
-    url(r'logout$',acount.ac_logout,name='logout'),
-    url(r'register$',acount.ac_register,name='register'),
 
-    # 后台
-    url(r'backend/',include('backend.urls')),
-
-    # 用户授权
-    url(r'api/',include('api.urls')),
+    url(r'user',userinfo.userinfo)
 
 ]

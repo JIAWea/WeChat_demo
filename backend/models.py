@@ -55,7 +55,7 @@ class Reporting(models.Model):
     报装申请
     """
     type = models.ForeignKey("ReportingType",on_delete=models.CASCADE,verbose_name="报装类型")
-    user = models.ForeignKey("UserProfile",on_delete=models.CASCADE)
+    user = models.CharField(max_length=32,verbose_name='报装人')
     remark = models.CharField(max_length=32,verbose_name='备注')
     createtime = models.DateTimeField(auto_now_add=True,null=True,blank=True,verbose_name="创建时间")
 
@@ -83,10 +83,10 @@ class TroubleType(models.Model):
 
 class TroubleShoot(models.Model):
     """
-    故障保修
+    故障报修
     """
     type = models.ForeignKey("TroubleType", on_delete=models.CASCADE,verbose_name='报修类型')
-    user = models.ForeignKey("UserProfile",on_delete=models.CASCADE)
+    user = models.CharField(max_length=32,verbose_name='报装人')
     content = models.CharField(max_length=32, verbose_name='报修详情')
     img = models.ImageField(upload_to='./media/upload_imgs',verbose_name='图片')
     createtime = models.DateTimeField(auto_now_add=True,null=True, blank=True,verbose_name="创建时间")
@@ -98,7 +98,7 @@ class TroubleShoot(models.Model):
     status = models.SmallIntegerField(choices=status_choices, default=0,verbose_name="状态")
 
     class Meta:
-        verbose_name = '故障保修表'
-        verbose_name_plural = '故障保修表'
+        verbose_name = '故障报修表'
+        verbose_name_plural = '故障报修表'
     def __str__(self):
         return '%s' % self.type
