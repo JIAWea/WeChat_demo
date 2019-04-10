@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 import json,os
 from django.views.decorators.csrf import csrf_exempt    # 局部屏蔽csrf
 from WeChatPM.settings import MEDIA_UPLOAD_IMGS
+from django.views import View
 
 # 后台首页
 @login_required
@@ -86,63 +87,109 @@ def articles_delete(request,aid):
     return redirect('/articles')
 
 
+# 公告列表
+def infomation_list(request):
+    infomation = Info.objects.all()
+    return render(request,'info_list.html',{'infomation':infomation})
+
+
+# ########################################## 报装相关 ########################################
 
 
 # 报装信息列表
 @login_required
 def reporting_list(request):
     reporting_all = Reporting.objects.all()
+    if request.method == "POST":
+        content = request.body  # 字节
+        content = str(content, encoding='utf-8')  # 字符串
+        result = json.loads(content)
+        # print('结果', type(result))               # [1,2,3]
+        response = {'status': False, 'msg': None}
+        for id in result:
+            if id:
+                obj = Reporting.objects.filter(id=id).first()
+                if obj.status == 1:
+                    response['msg'] = '已经处理过了'
+                else:
+                    Reporting.objects.filter(id=id).update(status=1)
+                    response['status'] = True
+                    response['msg'] = '设置成功'
+            else:
+                response['msg'] = '设置失败'
+        return JsonResponse(response)
     return render(request,'reporting_list.html',{'reporting_all':reporting_all})
 
-# 报装信息添加
-@login_required
-def reporting_add(request):
-    obj = ReprotingForm()           # 这里使用ModelForm进行表单验证和生成HTML
-    if request.method == "POST":
-        obj = ReprotingForm(data=request.POST)
-        if obj.is_valid():
-            obj.save()
-            return redirect('/reporting')
-    return render(request,'reporting_add.html',{'obj':obj})
-
-# 报装信息修改
-@login_required
-def reporting_edit(request,rid):
-    reporting_obj = Reporting.objects.filter(id=rid).first()
-    obj = ReprotingForm(instance=reporting_obj)             # instance：传入要修改数据的对象
-    if request.method == "POST":
-        obj = ReprotingForm(instance=reporting_obj,data=request.POST)
-        if obj.is_valid():
-            obj.save()
-            return redirect('/reporting')
-    return render(request,'reporting_edit.html',{'obj':obj})
-
 # 报装信息删除
-@login_required
-def reporting_delete(request,rid):
-    Reporting.objects.get(id=rid).delete()
-    return redirect('/reporting')
+def reporting_delete(request):
+    if request.method == "POST":
+        content = request.body  # 字节
+        content = str(content, encoding='utf-8')  # 字符串
+        result = json.loads(content)
+        # print('结果', type(result))               # [1,2,3]
+        response = {'status': False, 'msg': None}
+        for id in result:
+            if id:
+                obj = Reporting.objects.filter(id=id).first()
+                if not obj:
+                    response['msg'] = '该信息已经被删除过了'
+                else:
+                    Reporting.objects.filter(id=id).delete()
+                    response['status'] = True
+                    response['msg'] = '删除成功'
+            else:
+                response['msg'] = '删除失败'
+        return JsonResponse(response)
 
 
-
+# ########################################## 报修相关 ########################################
 
 # 报修列表
 def repair_list(request):
     repair_all = TroubleShoot.objects.all()
-    return render(request,'repair_list.html',{'repair_all':repair_all,'MEDIA_UPLOAD_IMGS':MEDIA_UPLOAD_IMGS})
-
-# 报修添加
-def repair_add(request):
-    obj = RepairForm()  # 这里使用ModelForm进行表单验证和生成HTML
     if request.method == "POST":
-        obj = RepairForm(request.POST,request.FILES)
-        if obj.is_valid():
-            obj.save()
-            return redirect('/repair')
-    return render(request, 'repair_add.html', {'obj': obj})
+        content = request.body  # 字节
+        content = str(content, encoding='utf-8')  # 字符串
+        result = json.loads(content)
+        # print('结果', type(result))               # [1,2,3]
+        response = {'status': False, 'msg': None}
+        for id in result:
+            if id:
+                obj = TroubleShoot.objects.filter(id=id).first()
+                if obj.status == 1:
+                    response['msg'] = '已经处理过了'
+                else:
+                    TroubleShoot.objects.filter(id=id).update(status=1)
+                    response['status'] = True
+                    response['msg'] = '设置成功'
+            else:
+                response['msg'] = '设置失败'
+        return JsonResponse(response)
+    return render(request,'repair_list.html',{'repair_all':repair_all})
+
+# 报修删除
+def repair_delete(request):
+    if request.method == "POST":
+        content = request.body  # 字节
+        content = str(content, encoding='utf-8')  # 字符串
+        result = json.loads(content)
+        # print('结果', type(result))               # [1,2,3]
+        response = {'status': False, 'msg': None}
+        for id in result:
+            if id:
+                obj = TroubleShoot.objects.filter(id=id).first()
+                if not obj:
+                    response['msg'] = '该信息已经被删除过了'
+                else:
+                    TroubleShoot.objects.filter(id=id).delete()
+                    response['status'] = True
+                    response['msg'] = '删除成功'
+            else:
+                response['msg'] = '删除失败'
+        return JsonResponse(response)
 
 
-
+# ########################################## 文章图片 ########################################
 
 # 文章图片
 @csrf_exempt

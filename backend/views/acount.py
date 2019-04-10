@@ -1,7 +1,13 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
+from django.views import View
+from backend.models import *
+from django.http import JsonResponse
+import json
 
+
+# 后台用户登录
 def ac_login(request):
     """
     用户登录
@@ -19,7 +25,7 @@ def ac_login(request):
             return render(request,'login.html',{'error_msg':"用户名或密码错误!"})
     return render(request,'login.html')
 
-
+# 后台用户退出
 def ac_logout(request):
     """
     退出登录
@@ -29,7 +35,7 @@ def ac_logout(request):
     logout(request)
     return redirect('/login')
 
-
+# 后台用户注册
 def ac_register(request):
     """
     用户注册
@@ -65,3 +71,76 @@ def ac_register(request):
 #             err_msg = '原密码输入错误'
 #             content = {'err_msg': err_msg,}
 #             return render(request, 'set_password.html', content)
+
+#########################################################################################
+
+# 用户列表
+def users_list(request):
+    users_all = UserProfile.objects.all()
+    if request.method == "POST":
+        content = request.body                      # 字节
+        content = str(content, encoding='utf-8')    # 字符串
+        result = json.loads(content)
+        # print('结果', type(result))               # [1,2,3]
+        response = {'status':False,'msg':None}
+        for id in result:
+            if id:
+                obj = UserProfile.objects.filter(id=id).first()
+                if obj.is_superuser:
+                    response['msg'] = '该用户已经认证过了'
+                else:
+                    UserProfile.objects.filter(id=id).update(is_superuser=True)
+                    response['status'] = True
+                    response['msg'] = '设置成功'
+            else:
+                response['msg'] = '设置失败'
+        return JsonResponse(response)
+
+    return render(request, 'users_list.html',{'users_all':users_all})
+
+# 用户删除
+def users_delete(request):
+    if request.method == "POST":
+        content = request.body  # 字节
+        content = str(content, encoding='utf-8')  # 字符串
+        result = json.loads(content)
+        # print('结果', type(result))               # [1,2,3]
+        response = {'status': False, 'msg': None}
+        for id in result:
+            if id:
+                obj = UserProfile.objects.filter(id=id).first()
+                if not obj:
+                    response['msg'] = '该用户已经被删除过了'
+                else:
+                    UserProfile.objects.filter(id=id).delete()
+                    response['status'] = True
+                    response['msg'] = '删除成功'
+            else:
+                response['msg'] = '删除失败'
+        return JsonResponse(response)
+
+
+# 企业关联用户
+def superusers_list(request):
+    superusers_all = SuperUser.objects.all()
+    return render(request, 'superusers_list.html',{'superusers_all':superusers_all})
+
+def superusers_delete(request):
+    if request.method == "POST":
+        content = request.body  # 字节
+        content = str(content, encoding='utf-8')  # 字符串
+        result = json.loads(content)
+        # print('结果', type(result))               # [1,2,3]
+        response = {'status': False, 'msg': None}
+        for id in result:
+            if id:
+                obj = SuperUser.objects.filter(id=id).first()
+                if not obj:
+                    response['msg'] = '该用户已经被删除过了'
+                else:
+                    SuperUser.objects.filter(id=id).delete()
+                    response['status'] = True
+                    response['msg'] = '删除成功'
+            else:
+                response['msg'] = '删除失败'
+        return JsonResponse(response)

@@ -6,14 +6,22 @@
 {% block breadcrumb %}
     <ol class="breadcrumb" style="font-size: 18px">
         <li><a href="{% url 'index' %}">首页</a></li>
-        <li><a style="color: grey;" href="javascript:;">报修管理</a></li>
+        <li><a style="color: grey;font-size: 25px;" href="javascript:;">报修管理</a></li>
     </ol>
 {% endblock %}
 
 {% block page-content %}
     <div>
+        <div class="btn-group pull-right b-group" >
+            <button id="checkAll" type="button" class="btn btn-default">全选</button>
+            <button id="reverselAll" type="button" class="btn btn-default">反选</button>
+            <button id="cancelAll" type="button" class="btn btn-default">取消</button>
+            <button id="superBtn" type="button" class="btn btn-success">设置为已处理</button>
+            <button id="delBtn" type="button" class="btn btn-danger">删除</button>
+        </div>
+
         <table class="table table-striped">
-            <theard>
+            <thead id="table_th">
                 <tr>
                     <th>id</th>
                     <th>报修类型</th>
@@ -21,26 +29,21 @@
                     <th>报修详情</th>
                     <th>图片</th>
                     <th>创建时间</th>
-                    <th>紧急程度</th>
                     <th>状态</th>
-                    <th>管理</th>
                 </tr>
-            </theard>
-            <tbody>
+            </thead>
+            <tbody id="table_tb">
                 {% for repair in repair_all %}
-                    <tr>
-                        <td>{{ repair.id }}</td>
+                    <tr id="{{ user.id }}">
+                        <td>
+                            <input type="checkbox">
+                        </td>
                         <td>{{ repair.type }}</td>
                         <td>{{ repair.user }}</td>
                         <td>{{ repair.content }}</td>
                         <td>{{ repair.img }}</td>
                         <td>{{ repair.createtime }}</td>
-                        <td>{{ repair.get_level_display }}</td>
                         <td>{{ repair.get_status_display }}</td>
-                        <td>
-                            <a href="/repair/edit/{{ repair.id }}">修 改</a> |
-                            <a href="/repair/delete/{{ repair.id }}">删 除</a>
-                        </td>
                     </tr>
                 {% endfor %}
             </tbody>
@@ -48,5 +51,153 @@
     </div>
 {% endblock %}
 {% block extra-bottom-js %}
+<script>
+    $(function () {
+        bindCheckAll();
+        bindReverselAll();
+        bindCancelAll();
+        bindIsSuper();
+        bindDelBtn();
+    });
 
+    // 全选
+    function bindCheckAll() {
+        $('#checkAll').click(function () {
+            $('#table_tb').find(':checkbox').each(function () {
+               if($(this).prop('checked')){
+                   // 已经是选中了，无需再选中
+               }else {
+                   $(this).prop('checked',true);
+               }
+            });
+        });
+    }
+    // 反选
+    function bindReverselAll() {
+        $('#reverselAll').click(function () {
+            $('#table_tb').find(':checkbox').each(function () {
+               if($(this).prop('checked')){
+                   $(this).prop('checked',false);
+               }else {
+                   $(this).prop('checked',true);
+               }
+            });
+        });
+    }
+    // 取消
+    function bindCancelAll() {
+        $('#cancelAll').click(function () {
+            $('#table_tb').find(':checked').each(function () {
+                $(this).prop('checked',false);
+                if($('#editBtn').hasClass('btn-warning')){
+                    $(this).prop('checked',false);
+                    trOutEditMode($(this).parent().parent());
+                }
+            })
+        });
+    }
+
+    function bindIsSuper() {
+        $("#superBtn").click(function () {
+            csrftoken();
+            var postList = [];
+            var tr = $(":checked").parent().parent();
+            if(tr.length != 0){
+                tr.each(function(){
+                    postList.push($(this).attr('id'));      // 选择的id
+                });
+                //console.log(postList);                       // [1,2,3]
+
+                if(postList != ''){
+                    $.ajax({
+                    url: '/backend/repair/',
+                    type: 'POST',
+                    dataType: 'JSON',
+                    data: JSON.stringify(postList),
+                    success:function (arg) {
+                        if(arg.status){
+                            alert(arg.msg);
+                            window.location.reload();
+                        }else {
+                            alert(arg.msg);
+                        }
+                    }
+                });
+                }
+            }else{
+                alert('请选择要设置的用户')
+            }
+        });
+    }
+
+    function bindDelBtn() {
+        $("#delBtn").click(function () {
+            var mymessage=confirm("您确定要删除所选择的信息吗?");
+            if(mymessage==true){
+                csrftoken();
+                var postList = [];
+                var tr = $(":checked").parent().parent();
+                if(tr.length != 0){
+                    tr.each(function(){
+                        postList.push($(this).attr('id'));      // 选择的id
+                    });
+                    //console.log(postList);                       // [1,2,3]
+
+                    if(postList != ''){
+                        $.ajax({
+                        url: '/backend/repair/delete/',
+                        type: 'POST',
+                        dataType: 'JSON',
+                        data: JSON.stringify(postList),
+                        success:function (arg) {
+                            if(arg.status){
+                                alert(arg.msg);
+                                window.location.reload();
+                            }else {
+                                alert(arg.msg);
+                            }
+                        }
+                    });
+                    }
+                }else{
+                    alert('请选择要删除的信息')
+                }
+            }
+        });
+    }
+
+    function csrftoken() {
+        /*********** csrftoken开始****************/
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        var csrftoken = getCookie('csrftoken');
+
+        function csrfSafeMethod(method) {
+            // these HTTP methods do not require CSRF protection
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+        }
+
+        $.ajaxSetup({
+            beforeSend: function (xhr, settings) {
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                }
+            }
+        });
+        /*********** csrftoken结束****************/
+    }
+</script>
 {% endblock %}

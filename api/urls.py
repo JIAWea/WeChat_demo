@@ -16,10 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url,include
-from api.views import userinfo
+from api.views import account
 
 urlpatterns = [
 
-    url(r'user',userinfo.userinfo)
+    url(r'register/', account.ac_register)
 
 ]

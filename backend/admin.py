@@ -27,16 +27,18 @@ class AdminTroubleType(admin.ModelAdmin):
     search_fields = ('type',)
 
 class AdminTroubleShoot(admin.ModelAdmin):
-    list_display = ('id', 'content', 'img' , 'createtime', 'user', 'level' , 'status')  # 指定要显示的字段
+    list_display = ('id', 'content', 'img' , 'createtime', 'level' , 'status')  # 指定要显示的字段
     ordering = ('id',)
 
 
 
-admin.site.register(models.UserProfile,AdminUserProfile)
-admin.site.register(models.Article,AdminArticle)
+admin.site.register(models.UserProfile)
+admin.site.register(models.Article)
 admin.site.register(models.ReportingType,AdminReportingType)
 admin.site.register(models.Reporting,AdminReporting)
 admin.site.register(models.TroubleType,AdminTroubleType)
 admin.site.register(models.TroubleShoot,AdminTroubleShoot)
 
+admin.site.register(models.SuperUser)
+admin.site.register(models.Info)
 

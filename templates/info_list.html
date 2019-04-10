@@ -1,18 +1,22 @@
 {% extends 'base/index.html' %}
 {% block title %}
-    <title>文章管理</title>
+    <title>公告管理</title>
+    <style>
+        .b-group{
+            margin: 20px 0 20px 0;
+        }
+    </style>
 {% endblock %}
 
 {% block breadcrumb %}
     <ol class="breadcrumb" style="font-size: 18px">
         <li><a href="{% url 'index' %}">首页</a></li>
-        <li><a style="color: grey;font-size: 25px;" href="javascript:;">文章列表</a></li>
+        <li><a style="color: grey;font-size: 25px;" href="javascript:;">公告列表</a></li>
     </ol>
 {% endblock %}
 
 {% block page-content %}
     <div>
-
         <div class="btn-group pull-right b-group" >
             <button id="checkAll" type="button" class="btn btn-default">全选</button>
             <button id="reverselAll" type="button" class="btn btn-default">反选</button>
@@ -36,24 +40,26 @@
         </div>
 
         <table class="table table-striped">
-            <thead>
+            <thead id="table_th">
                 <tr>
                     <th>选择</th>
-                    <th>文章标题</th>
-                    <th>文章内容</th>
+                    <th>标题</th>
+                    <th>内容</th>
+                    <th>发布者</th>
                     <th>创建时间</th>
                     <th>操作</th>
                 </tr>
             </thead>
-            <tbody>
-                {% for article in article_list %}
+            <tbody id="table_tb">
+                {% for info in infomation %}
                     <tr id="{{ article.id }}">
                         <td>
                             <input type="checkbox">
                         </td>
-                        <td>{{ article.title }}</td>
-                        <td>{{ article.content }}</td>
-                        <td>{{ article.createtime }}</td>
+                        <td>{{ info.title }}</td>
+                        <td>{{ info.content }}</td>
+                        <td>{{ info.pulisher }}</td>
+                        <td>{{ info.createtime }}</td>
                         <td>
                             <a href="/backend/infomation/edit/{{ info.id }}">编辑</a>
                         </td>
@@ -62,4 +68,10 @@
             </tbody>
         </table>
     </div>
+{% endblock %}
+
+
+{% block extra-bottom-js %}
+
+
 {% endblock %}

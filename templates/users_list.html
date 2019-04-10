@@ -1,15 +1,12 @@
 {% extends 'base/index.html' %}
 {% block title %}
-    <title>文章管理</title>
-    <style>
-
-    </style>
+    <title>用户管理</title>
 {% endblock %}
 
 {% block breadcrumb %}
     <ol class="breadcrumb" style="font-size: 18px">
         <li><a href="{% url 'index' %}">首页</a></li>
-        <li><a style="color: grey;font-size: 25px;" href="javascript:;">报装列表</a></li>
+        <li><a style="color: grey;font-size: 25px;" href="javascript:;">普通用户列表</a></li>
     </ol>
 {% endblock %}
 
@@ -19,39 +16,50 @@
             <button id="checkAll" type="button" class="btn btn-default">全选</button>
             <button id="reverselAll" type="button" class="btn btn-default">反选</button>
             <button id="cancelAll" type="button" class="btn btn-default">取消</button>
-            <button id="statusBtn" type="button" class="btn btn-success">设置为已处理</button>
+            <button id="superBtn" type="button" class="btn btn-success">通过认证</button>
             <button id="delBtn" type="button" class="btn btn-danger">删除</button>
+
         </div>
 
         <table class="table table-striped">
             <thead id="table_th">
                 <tr>
                     <th>选择</th>
-                    <th>报装类型</th>
-                    <th>报装人</th>
-                    <th>备注</th>
-                    <th>创建时间</th>
-                    <th>状态</th>
+                    <th>用户名</th>
+                    <th>公司名称</th>
+                    <th>大厦</th>
+                    <th>楼层</th>
+                    <th>房间</th>
+                    <th>手机</th>
+                    <th>用户认证</th>
                 </tr>
             </thead>
             <tbody id="table_tb">
-                {% for reporting in reporting_all %}
+                {% for user in users_all %}
                     <tr id="{{ user.id }}">
                         <td>
                             <input type="checkbox">
                         </td>
-                        <td>{{ reporting.type }}</td>
-                        <td>{{ reporting.user }}</td>
-                        <td>{{ reporting.remark }}</td>
-                        <td>{{ reporting.createtime }}</td>
-                        <td>{{ reporting.get_status_display }}</td>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.company }}</td>
+                        <td>{{ user.get_building_display }}</td>
+                        <td>{{ user.get_floor_display }}</td>
+                        <td>{{ user.room }}</td>
+                        <td>{{ user.phone }}</td>
+                        <td>
+                            {% if user.is_superuser %}
+                                是
+                            {% else %}
+                                否
+                            {% endif %}
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
-
 {% endblock %}
+
 
 {% block extra-bottom-js %}
 <script>
@@ -99,9 +107,9 @@
             })
         });
     }
-
+    // 通过认证
     function bindIsSuper() {
-        $("#statusBtn").click(function () {
+        $("#superBtn").click(function () {
             csrftoken();
             var postList = [];
             var tr = $(":checked").parent().parent();
@@ -113,7 +121,7 @@
 
                 if(postList != ''){
                     $.ajax({
-                    url: '/backend/reporting/',
+                    url: '/backend/users/',
                     type: 'POST',
                     dataType: 'JSON',
                     data: JSON.stringify(postList),
@@ -132,10 +140,10 @@
             }
         });
     }
-
+    // 删除
     function bindDelBtn() {
         $("#delBtn").click(function () {
-            var mymessage=confirm("您确定要删除所选择的信息吗?");
+            var mymessage=confirm("您确定要删除所选择的用户吗?");
             if(mymessage==true){
                 csrftoken();
                 var postList = [];
@@ -148,7 +156,7 @@
 
                     if(postList != ''){
                         $.ajax({
-                        url: '/backend/reporting/delete/',
+                        url: '/backend/users/delete/',
                         type: 'POST',
                         dataType: 'JSON',
                         data: JSON.stringify(postList),
@@ -163,11 +171,12 @@
                     });
                     }
                 }else{
-                    alert('请选择要删除的信息')
+                    alert('请选择要设置的用户')
                 }
             }
         });
     }
+
     function csrftoken() {
         /*********** csrftoken开始****************/
         function getCookie(name) {
@@ -201,8 +210,6 @@
         });
         /*********** csrftoken结束****************/
     }
-
 </script>
-
 
 {% endblock %}
