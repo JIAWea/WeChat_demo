@@ -9,11 +9,12 @@ from django.contrib.auth.decorators import login_required
 import json,os
 from django.views.decorators.csrf import csrf_exempt    # 局部屏蔽csrf
 from WeChatPM.settings import MEDIA_UPLOAD_IMGS
-from django.views import View
+from django.urls import resolve
 
 # 后台首页
 @login_required
 def index(request):
+
     # no_done_num = Reporting.objects.filter(status=0).count()  # 未处理
     # repair_no_done_num = TroubleShoot.objects.filter(status=0).count()  # 未处理
     return render(request, 'index.html',

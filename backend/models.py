@@ -1,5 +1,74 @@
 from django.db import models
+from django.contrib.auth.models import Permission,ContentType
 
+
+# 自定制django用户认证
+from django.contrib.auth.models import (
+    BaseUserManager, AbstractBaseUser,PermissionsMixin
+)
+
+class BackendUserManager(BaseUserManager):
+    def create_user(self, email, name, password=None):
+        """
+        Creates and saves a User with the given email, date of
+        birth and password.
+        """
+        if not name:
+            raise ValueError('Users must have an name')
+
+        user = self.model(
+            email=self.normalize_email(email),
+            name=name,
+        )
+
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
+    def create_superuser(self, email, name, password):
+        """
+        Creates and saves a superuser with the given email, date of
+        birth and password.
+        """
+        user = self.create_user(
+            email,
+            password=password,
+            name=name,
+        )
+        user.is_superuser = True
+        user.save(using=self._db)
+        return user
+
+class BackendUser(AbstractBaseUser,PermissionsMixin):
+    name = models.CharField(max_length=64, verbose_name="用户名",unique=True)
+    email = models.EmailField(
+        verbose_name='邮件',
+        max_length=255,
+        blank=True,
+        null=True
+    )
+    is_active = models.BooleanField(default=True)         # 决定是否可以登录后台
+    is_staff = models.BooleanField(default=True)          # 决定是否可以登录后台
+
+    objects = BackendUserManager()
+    USERNAME_FIELD = 'name'
+    REQUIRED_FIELDS = ['email']
+
+    def get_full_name(self):
+        # The user is identified by their email address
+        return self.name
+
+    def get_short_name(self):
+        # The user is identified by their email address
+        return self.name
+
+    def __str__(self):              # __unicode__ on Python 2
+        return self.name
+
+
+
+
+# 结束
 
 class UserProfile(models.Model):
     """

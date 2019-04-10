@@ -20,7 +20,7 @@ def ac_login(request):
         user = authenticate(username=username,password=password)
         if user:
             login(request,user)
-            return redirect(request.GET.get('next','/index'))
+            return redirect(request.GET.get('next','/backend/index/'))
         else:
             return render(request,'login.html',{'error_msg':"用户名或密码错误!"})
     return render(request,'login.html')
