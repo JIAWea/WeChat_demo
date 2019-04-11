@@ -43,7 +43,7 @@
                         <td>{{ reporting.type }}</td>
                         <td>{{ reporting.user }}</td>
                         <td>{{ reporting.remark }}</td>
-                        <td>{{ reporting.createtime }}</td>
+                        <td>{{ reporting.createtime|date:"Y-m-d H:i:s" }}</td>
                         <td>{{ reporting.get_status_display }}</td>
                     </tr>
                 {% endfor %}

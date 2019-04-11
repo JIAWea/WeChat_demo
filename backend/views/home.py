@@ -3,8 +3,6 @@ from django.shortcuts import redirect
 from django.shortcuts import HttpResponse
 from django.http import JsonResponse
 from backend.models import *
-from backend.modelForm.reportingform import ReprotingForm
-from backend.modelForm.repairform import RepairForm
 from django.contrib.auth.decorators import login_required
 import json,os
 from django.views.decorators.csrf import csrf_exempt    # 局部屏蔽csrf
@@ -14,34 +12,15 @@ from django.urls import resolve
 # 后台首页
 @login_required
 def index(request):
-
-    # no_done_num = Reporting.objects.filter(status=0).count()  # 未处理
-    # repair_no_done_num = TroubleShoot.objects.filter(status=0).count()  # 未处理
-    return render(request, 'index.html',
-                  # {'no_done_num':no_done_num,
-                  #  'repair_no_done_num':repair_no_done_num}
-                  )
+    return render(request, 'index.html',)
 
 # 文章列表
 @login_required
 def articles_list(request):
     article_list = Article.objects.all()        # 获取所有文章
-    # data = []
-    # for article in article_list:
-    #     data_dict = {}
-    #     data_dict["title"] = article.title
-    #     data_dict["content"] = article.content
-    #
-    #     data.append(data_dict)
-    # # print('文章列表',data)        [{'title': '关于公司', 'content': '<strong>哈哈哈</strong>'}, ]
-    # return JsonResponse({
-    #     'status':200,
-    #     'data':data
-    # })
     return render(request,'articles_list.html',{'article_list':article_list})
 
 # 文章添加
-@login_required
 def articles_add(request):
     response = {'status':200,'error_msg':''}
     if request.method == "POST":
@@ -56,12 +35,8 @@ def articles_add(request):
             response['error_msg'] = '标题不能为空'
             response['status'] = 400
             return JsonResponse(response)
-        if not user_id:
-            response['error_msg'] = '标题不能为空'
-            response['status'] = 400
-            return JsonResponse(response)
 
-        Article.objects.create(title=title,content=content,user_id=user_id)
+        Article.objects.create(title=title,content=content)
         print(response)
         return JsonResponse(response)
 
@@ -70,25 +45,24 @@ def articles_add(request):
 # 文章修改
 @login_required
 def articles_edit(request,aid):
-    user_all = UserProfile.objects.all()
     if request.method == "GET":
         article = Article.objects.filter(id=aid).first()
-        return render(request,'articles_edit.html',{'user_all':user_all,'aid':aid,'article':article})
+        return render(request,'articles_edit.html',{'aid':aid,'article':article})
     else:
         title = request.POST.get('title')
         content = request.POST.get('content')
-        user_id = request.POST.get('user_id')
-        Article.objects.filter(id=aid).update(title=title, content=content, user_id=user_id)
-        return redirect('/articles')
+        Article.objects.filter(id=aid).update(title=title, content=content)
+        return redirect('/backend/articles/')
 
 # 文章删除
 @login_required
 def articles_delete(request,aid):
     Article.objects.filter(id=aid).delete()
-    return redirect('/articles')
+    return redirect('/backend/articles/')
 
 
 # 公告列表
+@login_required
 def infomation_list(request):
     infomation = Info.objects.all()
     return render(request,'info_list.html',{'infomation':infomation})
@@ -122,6 +96,7 @@ def reporting_list(request):
     return render(request,'reporting_list.html',{'reporting_all':reporting_all})
 
 # 报装信息删除
+@login_required
 def reporting_delete(request):
     if request.method == "POST":
         content = request.body  # 字节
@@ -146,6 +121,7 @@ def reporting_delete(request):
 # ########################################## 报修相关 ########################################
 
 # 报修列表
+@login_required
 def repair_list(request):
     repair_all = TroubleShoot.objects.all()
     if request.method == "POST":
@@ -169,6 +145,7 @@ def repair_list(request):
     return render(request,'repair_list.html',{'repair_all':repair_all})
 
 # 报修删除
+@login_required
 def repair_delete(request):
     if request.method == "POST":
         content = request.body  # 字节
@@ -203,9 +180,22 @@ def img_upload(request):
                 for line in upload_img.chunks():
                     f.write(line)
             path = os.path.join(MEDIA_UPLOAD_IMGS,upload_img.name)
-            response['url'] = 'http:127.0.0.1:8000/%s' % str(path)      # 返回url路径
+            # response['url'] = 'http:127.0.0.1:8000/%s' % str(path)      # 返回url路径
+            response['url'] = str(upload_img.name)      # 返回url路径
         else:
             response['error'] = 1
             response['message'] = '上传失败'
     # print('返回信息',response)
     return JsonResponse(response)
+
+
+def img_show(request,name):
+    with open(os.path.join(MEDIA_UPLOAD_IMGS,name), 'rb') as f:
+        image_data = f.read()
+    return HttpResponse(image_data, content_type="image/png")
+
+def img_edit_show(request,aid,name):
+    with open(os.path.join(MEDIA_UPLOAD_IMGS,name), 'rb') as f:
+        image_data = f.read()
+    return HttpResponse(image_data, content_type="image/png")
+

@@ -39,7 +39,7 @@
                         <td>{{ info.title }}</td>
                         <td>{{ info.content }}</td>
                         <td>{{ info.pulisher }}</td>
-                        <td>{{ info.createtime }}</td>
+                        <td>{{ info.createtime|date:"Y-m-d H:i:s" }}</td>
                         <td>
                             <a href="/backend/infomation/edit/{{ info.id }}">编辑</a> |
                             <a href="/backend/infomation/delete/{{ info.id }}">删除</a>

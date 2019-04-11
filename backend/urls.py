@@ -4,12 +4,18 @@ from backend.views import acount
 from django.views.decorators.csrf import csrf_exempt
 
 urlpatterns = [
+    # 文件上传
+    url(r'zopen/img/upload',home.img_upload),
+    url(r'articles/add/(?P<name>(.+))', home.img_show),                              # 添加文章显示的图片
+    url(r'articles/edit/(?P<aid>(\d+))/(?P<name>(.+))', home.img_edit_show),         # 修改文章显示的图片
+
 
     # 文章相关
     url(r'articles/$',home.articles_list,name='articles_list'),
     url(r'articles/add/$',home.articles_add,name='articles_add'),
     url(r'articles/edit/(?P<aid>(\d+))/$',home.articles_edit),
     url(r'articles/delete/(?P<aid>(\d+))/$',home.articles_delete),
+
 
     # 公告列表
     url(r'infomation/$',home.infomation_list,name='infomation_list'),
@@ -23,10 +29,6 @@ urlpatterns = [
     url(r'repair/delete/$' , home.repair_delete , name='repair_delete'),            # 删除
 
 
-    # 文件上传
-    url(r'zopen/img/upload',home.img_upload),
-
-
     # 企业联系人用户的用户列表
     url(r'superusers/$',acount.superusers_list,name='superusers_list'),
     url(r'superusers/delete/$',acount.superusers_delete,name='superusers_delete'),
@@ -35,6 +37,8 @@ urlpatterns = [
     url(r'users/$',acount.users_list,name='users_list'),
     url(r'users/delete/$',acount.users_delete,name='users_delete'),
 
+    # 修改后台用户密码
+    url(r'backenduser/change/password/$',acount.chenge_password),
 
     # 主页
     url(r'',home.index,name='index'),

@@ -23,7 +23,7 @@
         <table class="table table-striped">
             <thead id="table_th">
                 <tr>
-                    <th>id</th>
+                    <th>选择</th>
                     <th>报修类型</th>
                     <th>报修人</th>
                     <th>报修详情</th>
@@ -42,7 +42,7 @@
                         <td>{{ repair.user }}</td>
                         <td>{{ repair.content }}</td>
                         <td>{{ repair.img }}</td>
-                        <td>{{ repair.createtime }}</td>
+                        <td>{{ repair.createtime|date:"Y-m-d H:i:s" }}</td>
                         <td>{{ repair.get_status_display }}</td>
                     </tr>
                 {% endfor %}

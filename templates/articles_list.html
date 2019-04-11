@@ -1,4 +1,5 @@
 {% extends 'base/index.html' %}
+
 {% block title %}
     <title>文章管理</title>
 {% endblock %}
@@ -26,15 +27,15 @@
             <tbody>
                 {% for article in article_list %}
                     <tr id="{{ article.id }}">
-                        <td>
+                        <td style="width: 5%;">
                             <input type="checkbox">
                         </td>
-                        <td>{{ article.title }}</td>
-                        <td>{{ article.content }}</td>
-                        <td>{{ article.createtime }}</td>
-                        <td>
-                            <a href="/backend/infomation/edit/{{ article.id }}">编辑</a> |
-                            <a href="/backend/infomation/delete/{{ article.id }}">删除</a>
+                        <td style="width: 15%;">{{ article.title }}</td>
+                        <td style="width: 55%;">{{ article.content }}</td>
+                        <td style="width: 15%;">{{ article.createtime|date:"Y-m-d H:i:s" }}</td>
+                        <td style="width: 10%;">
+                            <a href="/backend/articles/edit/{{ article.id }}/">编辑</a> |
+                            <a href="/backend/articels/delete/{{ article.id }}/">删除</a>
                         </td>
                     </tr>
                 {% endfor %}

@@ -13,7 +13,7 @@
 
 {% block page-content %}
     <div>
-        <form method="post" action="/articles/edit/{{ aid }}">
+        <form method="post" action="/backend/articles/edit/{{ aid }}/">
             {% csrf_token %}
             <div class="form-group">
                 <label>文章标题</label>
@@ -24,7 +24,6 @@
                 <textarea class="form-control" id="editor_id" name="content" >
                     {{ article.content }}
                 </textarea>
-
             </div>
 
             <input type="submit" class="btn btn-primary pull-right" value="修改" />
@@ -43,6 +42,9 @@
                     height:'300px',
                     uploadJson:'/backend/zopen/img/upload',
                     filePostName:"uploadImg",
+                    afterUpload:function(url) {
+                        console.log(url);       // 文件上传后的回调函数
+                    },
                 });
         });
     </script>

@@ -35,46 +35,53 @@ def ac_logout(request):
     logout(request)
     return redirect('/login')
 
-# 后台用户注册
+# 后台用户添加
+@login_required
 def ac_register(request):
     """
     用户注册
     :param request:
     :return:
     """
-    return render(request,'register.html')
+    return JsonResponse({'status':'ok'})
 
 
-#
-# @login_required
-# def set_password(request):
-#     """
-#     重设密码
-#     :param request:
-#     :return:
-#     """
-#     user = request.user
-#     err_msg = ''
-#     if request.method == 'POST':
-#         old_password = request.POST.get('old_password', '')
-#         new_password = request.POST.get('new_password', '')
-#         repeat_password = request.POST.get('repeat_password', '')
-#         # 检查旧密码是否正确
-#         if user.check_password(old_password):
-#             if not new_password:err_msg = '新密码不能为空'
-#             elif new_password != repeat_password:
-#                 err_msg = '两次密码不一致'
-#             else:
-#                 user.set_password(new_password).save()
-#             return redirect("/login/")
-#         else:
-#             err_msg = '原密码输入错误'
-#             content = {'err_msg': err_msg,}
-#             return render(request, 'set_password.html', content)
+# 后台用户更改密码
+@login_required
+def chenge_password(request):
+    """
+    重设密码
+    :param request:
+    :return:
+    """
+    user = request.user
+    print(user)
+    err_msg = ''
+    if request.method == 'POST':
+        old_password = request.POST.get('old_password', '')
+        new_password = request.POST.get('new_password', '')
+        repeat_password = request.POST.get('repeat_password', '')
+
+        # 检查旧密码是否正确
+        if user.check_password(old_password):
+            if not new_password:
+                err_msg = '新密码不能为空'
+            elif new_password != repeat_password:
+                err_msg = '两次密码不一致'
+                return JsonResponse({'err_msg': err_msg, })
+            else:
+                user.set_password(new_password)
+                user.save()
+            return redirect("/login/")
+        else:
+            err_msg = '原密码输入错误'
+            return JsonResponse({'err_msg': err_msg,})
+
 
 #########################################################################################
 
-# 用户列表
+# 普通用户列表
+@login_required
 def users_list(request):
     users_all = UserProfile.objects.all()
     if request.method == "POST":
@@ -98,7 +105,8 @@ def users_list(request):
 
     return render(request, 'users_list.html',{'users_all':users_all})
 
-# 用户删除
+# 普通用户删除
+@login_required
 def users_delete(request):
     if request.method == "POST":
         content = request.body  # 字节
@@ -121,10 +129,12 @@ def users_delete(request):
 
 
 # 企业关联用户
+@login_required
 def superusers_list(request):
     superusers_all = SuperUser.objects.all()
     return render(request, 'superusers_list.html',{'superusers_all':superusers_all})
 
+@login_required
 def superusers_delete(request):
     if request.method == "POST":
         content = request.body  # 字节

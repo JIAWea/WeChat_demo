@@ -48,6 +48,7 @@
 {#								<span class="pull-right">#}
 {#									<img class="img-circle img-user media-object" src="/static/img/av1.png" alt="Profile Picture">#}
 {#								</span>#}
+
 								<div class="username hidden-xs">
                                     {{ user }}
                                 <i class="fa fa-sort-desc" aria-hidden="true"></i>
@@ -65,14 +66,14 @@
 										</a>
 									</li>
 									<li>
-										<a data-toggle="modal" data-target="#exampleModal" href="javascript:;">
+										<a data-toggle="modal" data-target="#exampleModal" href="#">
 											<i class="fa fa-user fa-fw fa-lg"></i>
                                             添加管理员
 										</a>
 									</li>
                                     <li>
 										<a href="{% url 'logout' %}">
-                                            <i class="fa fa-gear fa-fw fa-lg"></i>
+                                            <i class="fa fa-times fa-fw fa-lg"></i>
                                             退出登录
 										</a>
 									</li>
@@ -134,30 +135,33 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title" id="exampleModalLabel">添加管理员</h4>
+                                    <h4 class="modal-title" id="exampleModalLabel">更改密码</h4>
                                 </div>
                                 <div class="modal-body">
-                                <form>
+                                <form id="changepassword">
+                                    {% csrf_token %}
                                     <div class="form-group">
                                         <label for="recipient-name" class="control-label">旧密码</label>
                                         <span style="color: red;">*</span>
-                                        <input type="text" class="form-control" name="oldpassword">
+                                        <input type="password" class="form-control" name="old_password">
                                     </div>
                                     <div class="form-group">
                                         <label for="message-text" class="control-label">新密码</label>
                                         <span style="color: red;">*</span>
-                                        <input type="text" class="form-control" name="password">
+                                        <input type="password" class="form-control" name="new_password">
                                     </div>
                                     <div class="form-group">
                                         <label for="message-text" class="control-label">确认新密码</label>
                                         <span style="color: red;">*</span>
-                                        <input type="text" class="form-control" name="comfirmpwd">
+                                        <input type="password" class="form-control" name="repeat_password">
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <input type="submit" class="btn btn-default" data-dismiss="modal" value="取消">
+{#                                        <input type="submit" onclick="fun()" class="btn btn-primary" value="添加">#}
+                                        <a id="SetPassword" class="btn btn-primary" >添加</a>
                                     </div>
                                 </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                                    <button type="button" class="btn btn-primary">添加</button>
                                 </div>
                             </div>
                           </div>
@@ -172,7 +176,8 @@
                                     <h4 class="modal-title" id="exampleModalLabel">添加管理员</h4>
                                 </div>
                                 <div class="modal-body">
-                                <form>
+                                <form method="get">
+                                    {% csrf_token %}
                                     <div class="form-group">
                                         <label for="recipient-name" class="control-label">用户名</label>
                                         <span style="color: red;">*</span>
@@ -186,39 +191,46 @@
                                     <div class="form-group">
                                         <label for="message-text" class="control-label">确认密码</label>
                                         <span style="color: red;">*</span>
-                                        <input type="text" class="form-control" name="comfirmpwd">
+                                        <input type="text" class="form-control" name="repeat_password">
                                     </div>
                                     <div class="form-group">
                                         <label for="message-text" class="control-label">邮箱</label>
                                         <input type="text" class="form-control" name="email">
                                     </div>
+                                    <div class="form-group">
+                                        <label for="message-text" class="control-label">权限分配</label>
+                                        <span style="color: red;">*</span>
+                                        <p>
+                                            <span style="margin-right: 5px">用户</span><input value="用户" style="vertical-align: -2px;" type="checkbox" name="permission">
+                                            <span style="margin-right: 5px">文章</span><input value="文章" style="vertical-align: -2px;" type="checkbox" name="permission">
+                                            <span style="margin-right: 5px">公告</span><input value="公告" style="vertical-align: -2px;" type="checkbox" name="permission">
+                                            <span style="margin-right: 5px">报装</span><input value="报装" style="vertical-align: -2px;" type="checkbox" name="permission">
+                                            <span style="margin-right: 5px">报修</span><input value="报修" style="vertical-align: -2px;" type="checkbox" name="permission">
+                                        </p>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <input type="submit" class="btn btn-default" data-dismiss="modal" value="取消">
+                                        <input type="submit" class="btn btn-primary" value="添加">
+                                    </div>
                                 </form>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                                    <button type="button" class="btn btn-primary">添加</button>
-                                </div>
+
                             </div>
                           </div>
                         </div>
-
                     {% block page-content %}
 
                     {% endblock %}
                 </div>
-
-
 			</div>
 			<!--===================================================-->
 			<!--END CONTENT CONTAINER-->
-
-
 
 			<!--MAIN NAVIGATION-->
 			<!--===================================================-->
 			<nav id="mainnav-container">
 				<div id="mainnav">
-
 					<!--Shortcut buttons-->
 					<!--================================-->
 					<div id="mainnav-shortcut">
@@ -243,18 +255,14 @@
 					<!--================================-->
 					<!--End shortcut buttons-->
 
-
 					<!--Menu-->
 					<!--================================-->
 					<div id="mainnav-menu-wrap">
 						<div class="nano">
 							<div class="nano-content">
 								<ul id="mainnav-menu" class="list-group">
-
-
 									<!--Category name-->
 									<li class="list-header">菜单栏</li>
-
 									<!--Menu list item-->
                                     <li class="active-link">
 										<a href="/backend">
@@ -268,21 +276,18 @@
 											<span class="menu-title">普通用户</span>
 										</a>
 									</li>
-
                                     <li class="">
 										<a href="{% url 'reporting_list' %}">
 											<i class="fa fa-plane"></i>
 											<span class="menu-title">报装管理</span>
 										</a>
 									</li>
-
                                     <li class="">
 										<a href="{% url 'repair_list' %}">
 											<i class="fa fa-plane"></i>
 											<span class="menu-title">报修管理</span>
 										</a>
 									</li>
-
                                     <li class="">
 										<a href="{% url 'superusers_list' %}">
 											<i class="fa fa-plane"></i>
@@ -291,7 +296,6 @@
 									</li>
 									<!--Menu list item-->
                                     <li class="list-divider"></li>
-
 									<!--Category name-->
 									<li class="list-header">信息站</li>
                                     <!--Category name-->
@@ -303,13 +307,11 @@
 											</span>
 											<i class="arrow"></i>
 										</a>
-
 										<!--Submenu-->
 										<ul class="collapse">
 											<li><a href="{% url 'articles_list' %}">文章列表</a></li>
 										</ul>
 									</li>
-
                                     <li>
 										<a href="#">
 											<i class="fa fa-taxi"></i>
@@ -326,11 +328,9 @@
 
 								</ul>
 
-
 								<!--Widget-->
 								<!--================================-->
 								<div class="mainnav-widget">
-
 									<!-- Show the button on collapsed navigation -->
 									<div class="show-small">
 										<a href="#" data-toggle="menu-widget" data-target="#demo-wg-server">
@@ -341,13 +341,11 @@
 								</div>
 								<!--================================-->
 								<!--End widget-->
-
 							</div>
 						</div>
 					</div>
 					<!--================================-->
 					<!--End menu-->
-
 				</div>
 			</nav>
 			<!--===================================================-->
@@ -357,20 +355,13 @@
         <!-- FOOTER -->
         <!--===================================================-->
         <footer id="footer">
-
             <!-- Visible when footer positions are static -->
             <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
             <div class="hide-fixed pull-right pad-rgt">Currently v1</div>
-
-
-
             <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
             <!-- Remove the class name "show-fixed" and "hide-fixed" to make the content always appears. -->
             <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-
             <p class="pad-lft">&#0169; 2015 Your Company</p>
-
-
 
         </footer>
         <!--===================================================-->
@@ -382,10 +373,8 @@
         <button id="scroll-top" class="btn"><i class="fa fa-chevron-up"></i></button>
         <!--===================================================-->
 
-
-
 	</div>
 	<!--===================================================-->
 	<!-- END OF CONTAINER -->
-
+    <script src="/static/js/index.js"></script>
 {% endblock %}
