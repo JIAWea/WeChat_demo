@@ -39,7 +39,12 @@ urlpatterns = [
 
     # 修改后台用户密码
     url(r'backenduser/change/password/$',acount.chenge_password),
+    # 添加后台管理员
+    url(r'backenduser/add/$',acount.backenduser_add),
 
+
+    # 无权限
+    url(r'permissiondenied/$',home.permission_denied),
     # 主页
     url(r'',home.index,name='index'),
 

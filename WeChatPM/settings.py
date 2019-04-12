@@ -84,7 +84,7 @@ DATABASES = {
         'HOST': '',
         'PORT': '3306',
         'OPTIONS':{
-                "init_command":"SET foreign_key_checks = 0;",       # 用于admin后台操作错误
+            "init_command":"SET foreign_key_checks = 0;",       # 用于admin后台操作错误
         }
     }
 }

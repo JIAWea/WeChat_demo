@@ -1,5 +1,6 @@
 from django.contrib import admin
 from . import models
+from django.contrib.auth.models import Permission
 
 class AdminArticle(admin.ModelAdmin):
     list_display = ('id', 'title', 'content', 'createtime')  # 指定要显示的字段
@@ -41,5 +42,14 @@ admin.site.register(models.TroubleShoot,AdminTroubleShoot)
 
 admin.site.register(models.SuperUser)
 admin.site.register(models.Info)
-admin.site.register(models.BackendUser)
+
+class BackendUserAdmin(admin.ModelAdmin):
+    filter_horizontal = ('user_permissions', 'groups')
+admin.site.register(models.BackendUser,BackendUserAdmin)
+
+
+class PermissionAdmin(admin.ModelAdmin):
+    list_display = ('name', 'content_type', 'codename')
+    list_filter = ('content_type',)
+admin.site.register(Permission,PermissionAdmin)
 

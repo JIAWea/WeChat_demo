@@ -8,6 +8,8 @@ import json,os
 from django.views.decorators.csrf import csrf_exempt    # 局部屏蔽csrf
 from WeChatPM.settings import MEDIA_UPLOAD_IMGS
 from django.urls import resolve
+from django.contrib.auth.decorators import login_required,permission_required
+from backend.views.check_permission import check_permission
 
 # 后台首页
 @login_required
@@ -15,6 +17,7 @@ def index(request):
     return render(request, 'index.html',)
 
 # 文章列表
+@check_permission('backend.article_manager')
 @login_required
 def articles_list(request):
     article_list = Article.objects.all()        # 获取所有文章
@@ -43,6 +46,7 @@ def articles_add(request):
     return render(request,'articles_add.html')
 
 # 文章修改
+@check_permission('backend.article_manager')
 @login_required
 def articles_edit(request,aid):
     if request.method == "GET":
@@ -55,6 +59,7 @@ def articles_edit(request,aid):
         return redirect('/backend/articles/')
 
 # 文章删除
+@check_permission('backend.article_manager')
 @login_required
 def articles_delete(request,aid):
     Article.objects.filter(id=aid).delete()
@@ -62,6 +67,7 @@ def articles_delete(request,aid):
 
 
 # 公告列表
+@check_permission('backend.info_manager')
 @login_required
 def infomation_list(request):
     infomation = Info.objects.all()
@@ -72,6 +78,7 @@ def infomation_list(request):
 
 
 # 报装信息列表
+@check_permission('backend.reporting_manager')
 @login_required
 def reporting_list(request):
     reporting_all = Reporting.objects.all()
@@ -96,6 +103,7 @@ def reporting_list(request):
     return render(request,'reporting_list.html',{'reporting_all':reporting_all})
 
 # 报装信息删除
+@check_permission('backend.reporting_manager')
 @login_required
 def reporting_delete(request):
     if request.method == "POST":
@@ -122,6 +130,7 @@ def reporting_delete(request):
 
 # 报修列表
 @login_required
+@check_permission('backend.repair_manager')
 def repair_list(request):
     repair_all = TroubleShoot.objects.all()
     if request.method == "POST":
@@ -145,6 +154,7 @@ def repair_list(request):
     return render(request,'repair_list.html',{'repair_all':repair_all})
 
 # 报修删除
+@check_permission('backend.repair_manager')
 @login_required
 def repair_delete(request):
     if request.method == "POST":
@@ -188,14 +198,18 @@ def img_upload(request):
     # print('返回信息',response)
     return JsonResponse(response)
 
-
+# 图片显示
 def img_show(request,name):
     with open(os.path.join(MEDIA_UPLOAD_IMGS,name), 'rb') as f:
         image_data = f.read()
     return HttpResponse(image_data, content_type="image/png")
-
+# 图片显示
 def img_edit_show(request,aid,name):
     with open(os.path.join(MEDIA_UPLOAD_IMGS,name), 'rb') as f:
         image_data = f.read()
     return HttpResponse(image_data, content_type="image/png")
 
+
+# 无权限
+def permission_denied(request):
+    return render(request,'403.html')

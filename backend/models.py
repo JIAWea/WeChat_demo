@@ -65,7 +65,15 @@ class BackendUser(AbstractBaseUser,PermissionsMixin):
     def __str__(self):              # __unicode__ on Python 2
         return self.name
 
-
+    class Meta:
+        verbose_name_plural = "后台管理员"
+        permissions = (
+            ('user_manager','用户管理'),
+            ('article_manager','文章管理'),
+            ('info_manager','公告管理'),
+            ('reporting_manager','报装管理'),
+            ('repair_manager','报修管理'),
+        )
 
 
 # 结束

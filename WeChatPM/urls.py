@@ -23,7 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'login',acount.ac_login,name='login'),
     url(r'logout$',acount.ac_logout,name='logout'),
-    url(r'register$',acount.ac_register,name='register'),
 
     # 后台
     url(r'backend/',include('backend.urls')),
