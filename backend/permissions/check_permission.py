@@ -38,7 +38,7 @@ def check_permission(perm):
         def inner(*args,**kwargs):
             if not perm_check(perm,*args,**kwargs):     # 如果无权限，则返回403
                 request = args[0]
-                return render(request,'403.html')
+                return render(request, '403.html')
             return func(*args,**kwargs)
         return inner
     return decor

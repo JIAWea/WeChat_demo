@@ -1,12 +1,10 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate,login,logout
-from django.contrib.auth.decorators import login_required
-from django.db import IntegrityError
 from backend.models import *
 from django.http import JsonResponse
 import json
-from backend.views.permissions import *
-from backend.views.check_permission import check_permission
+from backend.permissions.permissions import *
+from backend.permissions.check_permission import check_permission
 
 # 后台用户登录
 def ac_login(request):
@@ -110,7 +108,7 @@ def backenduser_add(request):
 @login_required
 @check_permission('backend.user_manager')
 def users_list(request):
-    users_all = UserProfile.objects.all()
+    users_all = UserProfile.objects.all().order_by('-id')
     if request.method == "POST":
         content = request.body                      # 字节
         content = str(content, encoding='utf-8')    # 字符串
@@ -160,7 +158,7 @@ def users_delete(request):
 @check_permission('backend.user_manager')
 @login_required
 def superusers_list(request):
-    superusers_all = SuperUser.objects.all()
+    superusers_all = SuperUser.objects.all().order_by('-id')
     return render(request, 'superusers_list.html',{'superusers_all':superusers_all})
 
 @check_permission('backend.user_manager')

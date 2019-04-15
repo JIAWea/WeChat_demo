@@ -1,0 +1,53 @@
+{% extends 'base/index.html' %}
+{% block title %}
+    <title>文章修改</title>
+{% endblock %}
+
+{% block breadcrumb %}
+    <ol class="breadcrumb" style="font-size: 18px">
+        <li class=""><a href="{% url 'index' %}">首页</a></li>
+        <li class=""><a href="{% url 'articles_list' %}">文章管理</a></li>
+        <li><a style="color: grey;font-size: 25px;" href="javascript:;">文章修改</a></li>
+    </ol>
+{% endblock %}
+
+{% block page-content %}
+    <div>
+        <form method="post" action="/backend/article/edit/{{ aid }}/">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>文章标题</label>
+                {{ obj.title }}
+                 <p style="color: red;">{{ obj.title.errors.0 }}</p>
+            </div>
+            <div class="form-group">
+                <label>文章内容</label>
+                {{ obj.content }}
+                 <p style="color: red;">{{ obj.content.errors.0 }}</p>
+            </div>
+
+            <input type="submit" class="btn btn-primary pull-right" value="修改" />
+            <a href="/backend/articles/" style="margin-right: 25px" class="btn btn-default pull-right ">取消</a>
+
+        </form>
+    </div>
+{% endblock %}
+
+{% block extra-bottom-js %}
+    <script charset="utf-8" src="/static/kindeditor/kindeditor-all-min.js"></script>
+    <script>
+        var editor;
+        KindEditor.ready(function(K) {
+                editor = K.create('#editor_id',{
+                    resizeType:0,           //是否能改变宽度和长度
+                    width : '100%',
+                    height:'300px',
+                    uploadJson:'/backend/zopen/img/upload',
+                    filePostName:"uploadImg",
+                    afterUpload:function(url) {
+                        console.log(url);       // 文件上传后的回调函数
+                    },
+                });
+        });
+    </script>
+{% endblock %}

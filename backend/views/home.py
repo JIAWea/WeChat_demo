@@ -3,13 +3,14 @@ from django.shortcuts import redirect
 from django.shortcuts import HttpResponse
 from django.http import JsonResponse
 from backend.models import *
-from django.contrib.auth.decorators import login_required
 import json,os
 from django.views.decorators.csrf import csrf_exempt    # 局部屏蔽csrf
 from WeChatPM.settings import MEDIA_UPLOAD_IMGS
-from django.urls import resolve
-from django.contrib.auth.decorators import login_required,permission_required
-from backend.views.check_permission import check_permission
+from django.contrib.auth.decorators import login_required
+from backend.permissions.check_permission import check_permission
+from backend.modelForm.articleForm import articleForm
+from backend.modelForm.infomationForm import infomationForm
+
 
 # 后台首页
 @login_required
@@ -20,49 +21,50 @@ def index(request):
 @check_permission('backend.article_manager')
 @login_required
 def articles_list(request):
-    article_list = Article.objects.all()        # 获取所有文章
+    article_list = Article.objects.all().order_by('-id')       # 获取所有文章
     return render(request,'articles_list.html',{'article_list':article_list})
 
 # 文章添加
 def articles_add(request):
-    response = {'status':200,'error_msg':''}
+    obj = articleForm()
     if request.method == "POST":
-        title = request.POST.get('title')
-        content = request.POST.get('content')
-        user_id = request.POST.get('user_id')
-        if not title:
-            response['error_msg'] = '标题不能为空'
-            response['status'] = 400
-            return JsonResponse(response)
-        if not content:
-            response['error_msg'] = '标题不能为空'
-            response['status'] = 400
-            return JsonResponse(response)
+        obj = articleForm(request.POST)
+        if obj.is_valid():
+            obj.save()
+            return redirect('/backend/articles/')
+    return render(request, 'article_add.html',{'obj':obj})
 
-        Article.objects.create(title=title,content=content)
-        print(response)
-        return JsonResponse(response)
-
-    return render(request,'articles_add.html')
-
-# 文章修改
+# 文章编辑
 @check_permission('backend.article_manager')
 @login_required
-def articles_edit(request,aid):
-    if request.method == "GET":
-        article = Article.objects.filter(id=aid).first()
-        return render(request,'articles_edit.html',{'aid':aid,'article':article})
-    else:
-        title = request.POST.get('title')
-        content = request.POST.get('content')
-        Article.objects.filter(id=aid).update(title=title, content=content)
-        return redirect('/backend/articles/')
+def article_edit(request,aid):
+    article_obj = Article.objects.filter(id=aid).first()
+    obj = articleForm(instance=article_obj)
+    if request.method == "POST":
+        obj = articleForm(instance=article_obj,data=request.POST)
+        if obj.is_valid():
+            obj.save()
+            return redirect('/backend/articles/')
+    return render(request, 'article_edit.html', {'obj': obj,'aid':aid})
+    # if request.method == "GET":
+    #     article = Article.objects.filter(id=aid).first()
+    #     return render(request, 'article_edit.html', {'aid':aid, 'article':article})
+    # else:
+    #     title = request.POST.get('title')
+    #     content = request.POST.get('content')
+    #     if not title:
+    #         return render(request,'article_edit.html',{'err_msg':'标题不能为空'})
+    #     if not content:
+    #         return render(request, 'article_edit.html', {'err_msg': '内容不能为空'})
+    #     Article.objects.filter(id=aid).update(title=title, content=content)
+    #     return redirect('/backend/articles/')
 
 # 文章删除
 @check_permission('backend.article_manager')
 @login_required
-def articles_delete(request,aid):
-    Article.objects.filter(id=aid).delete()
+def article_delete(request,aid):
+    if aid:
+        Article.objects.filter(id=aid).delete()
     return redirect('/backend/articles/')
 
 
@@ -70,8 +72,41 @@ def articles_delete(request,aid):
 @check_permission('backend.info_manager')
 @login_required
 def infomation_list(request):
-    infomation = Info.objects.all()
-    return render(request,'info_list.html',{'infomation':infomation})
+    infomation = Info.objects.all().order_by('-id')
+    return render(request, 'infomation_list.html', {'infomation':infomation})
+
+# 公告添加
+@check_permission('backend.info_manager')
+@login_required
+def infomation_add(request):
+    obj = infomationForm()
+    if request.method == "POST":
+        obj = infomationForm(request.POST)
+        if obj.is_valid():
+            obj.save()
+            return redirect('/backend/infomation/')
+    return render(request, 'infomation_add.html', {'obj': obj})
+
+# 公告删除
+@check_permission('backend.info_manager')
+@login_required
+def infomation_delete(request,iid):
+    if iid:
+        Info.objects.filter(id=iid).delete()
+    return redirect('/backend/infomation/')
+
+# 公告编辑
+@check_permission('backend.info_manager')
+@login_required
+def infomation_edit(request,iid):
+    info_obj = Info.objects.filter(id=iid).first()
+    obj = infomationForm(instance=info_obj)
+    if request.method == "POST":
+        obj = infomationForm(instance=info_obj, data=request.POST)
+        if obj.is_valid():
+            obj.save()
+            return redirect('/backend/infomation/')
+    return render(request, 'infomation_edit.html', {'obj': obj, 'iid': iid})
 
 
 # ########################################## 报装相关 ########################################
@@ -81,7 +116,7 @@ def infomation_list(request):
 @check_permission('backend.reporting_manager')
 @login_required
 def reporting_list(request):
-    reporting_all = Reporting.objects.all()
+    reporting_all = Reporting.objects.all().order_by('-id')
     if request.method == "POST":
         content = request.body  # 字节
         content = str(content, encoding='utf-8')  # 字符串
@@ -132,7 +167,7 @@ def reporting_delete(request):
 @login_required
 @check_permission('backend.repair_manager')
 def repair_list(request):
-    repair_all = TroubleShoot.objects.all()
+    repair_all = TroubleShoot.objects.all().order_by('-id')
     if request.method == "POST":
         content = request.body  # 字节
         content = str(content, encoding='utf-8')  # 字符串
@@ -189,9 +224,10 @@ def img_upload(request):
             with open(os.path.join(MEDIA_UPLOAD_IMGS,upload_img.name),'wb') as f:
                 for line in upload_img.chunks():
                     f.write(line)
-            path = os.path.join(MEDIA_UPLOAD_IMGS,upload_img.name)
+            # path = os.path.join(MEDIA_UPLOAD_IMGS,upload_img.name)
             # response['url'] = 'http:127.0.0.1:8000/%s' % str(path)      # 返回url路径
-            response['url'] = str(upload_img.name)      # 返回url路径
+            print('--------------------',upload_img.name)
+            response['url'] = str(upload_img.name)                      # 返回url路径
         else:
             response['error'] = 1
             response['message'] = '上传失败'

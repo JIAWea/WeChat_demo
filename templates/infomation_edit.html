@@ -1,31 +1,38 @@
 {% extends 'base/index.html' %}
 {% block title %}
-    <title>文章添加</title>
+    <title>公告编辑</title>
 {% endblock %}
 
 {% block breadcrumb %}
     <ol class="breadcrumb" style="font-size: 18px">
         <li class=""><a href="{% url 'index' %}">首页</a></li>
-        <li class=""><a href="{% url 'articles_list' %}">文章管理</a></li>
-        <li><a style="color: grey;" href="javascript:;">文章添加</a></li>
+        <li class=""><a href="{% url 'infomation_list' %}">公告管理</a></li>
+        <li><a style="color: grey;font-size: 25px;" href="javascript:;">公告编辑</a></li>
     </ol>
 {% endblock %}
 
 {% block page-content %}
     <div>
-        <form method="post">
+        <form method="post" action="/backend/infomation/edit/{{ iid }}/">
             {% csrf_token %}
             <div class="form-group">
                 <label>文章标题</label>
-                <input type="text" class="form-control" name="title" placeholder="标题">
+                {{ obj.title }}
+                <p style="color: red;">{{ obj.title.errors.0 }}</p>
             </div>
             <div class="form-group">
                 <label>文章内容</label>
-{#                <textarea class="form-control" name="content" id="" cols="30" rows="10"></textarea>#}
-                <textarea class="form-control" id="editor_id" name="content" ></textarea>
+                {{ obj.content }}
+                <p style="color: red;">{{ obj.content.errors.0 }}</p>
+            </div>
+            <div class="form-group">
+                <label>发布者</label>
+                {{ obj.pulisher }}
+                <p style="color: red;">{{ obj.pulisher.errors.0 }}</p>
             </div>
 
-            <input type="submit" class="btn btn-primary pull-right" value="发布" />
+            <input type="submit" class="btn btn-primary pull-right" value="修改" />
+            <a href="/backend/infomation/" style="margin-right: 25px" class="btn btn-default pull-right">取消</a>
         </form>
     </div>
 {% endblock %}

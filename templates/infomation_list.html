@@ -33,7 +33,7 @@
             <tbody id="table_tb">
                 {% for info in infomation %}
                     <tr id="{{ article.id }}">
-                        <td>
+                        <td style="width:5%">
                             <input type="checkbox">
                         </td>
                         <td>{{ info.title }}</td>
@@ -41,8 +41,8 @@
                         <td>{{ info.pulisher }}</td>
                         <td>{{ info.createtime|date:"Y-m-d H:i:s" }}</td>
                         <td>
-                            <a href="/backend/infomation/edit/{{ info.id }}">编辑</a> |
-                            <a href="/backend/infomation/delete/{{ info.id }}">删除</a>
+                            <a href="/backend/infomation/edit/{{ info.id }}/">编辑</a> |
+                            <a href="/backend/infomation/delete/{{ info.id }}/">删除</a>
                         </td>
                     </tr>
                 {% endfor %}

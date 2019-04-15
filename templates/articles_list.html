@@ -34,8 +34,8 @@
                         <td style="width: 55%;">{{ article.content }}</td>
                         <td style="width: 15%;">{{ article.createtime|date:"Y-m-d H:i:s" }}</td>
                         <td style="width: 10%;">
-                            <a href="/backend/articles/edit/{{ article.id }}/">编辑</a> |
-                            <a href="/backend/articels/delete/{{ article.id }}/">删除</a>
+                            <a href="/backend/article/edit/{{ article.id }}/">编辑</a> |
+                            <a href="/backend/article/delete/{{ article.id }}/">删除</a>
                         </td>
                     </tr>
                 {% endfor %}

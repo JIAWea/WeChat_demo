@@ -34,16 +34,16 @@
             </thead>
             <tbody id="table_tb">
                 {% for repair in repair_all %}
-                    <tr id="{{ user.id }}">
-                        <td>
+                    <tr id="{{ repair.id }}">
+                        <td style="width:5%">
                             <input type="checkbox">
                         </td>
-                        <td>{{ repair.type }}</td>
-                        <td>{{ repair.user }}</td>
+                        <td style="width:10%">{{ repair.type }}</td>
+                        <td style="width:10%">{{ repair.user }}</td>
                         <td>{{ repair.content }}</td>
                         <td>{{ repair.img }}</td>
                         <td>{{ repair.createtime|date:"Y-m-d H:i:s" }}</td>
-                        <td>{{ repair.get_status_display }}</td>
+                        <td style="width:8%">{{ repair.get_status_display }}</td>
                     </tr>
                 {% endfor %}
             </tbody>
