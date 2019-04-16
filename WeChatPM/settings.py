@@ -139,4 +139,10 @@ LOGIN_URL = '/login/'           # 要跳转的下一页的url
 # SESSION_SAVE_EVERY_REQUEST = True
 # SESSION_EXPIRE_AT_BROWSER_CLOSE = True # 关闭浏览器，则COOKIE失效
 
-MEDIA_UPLOAD_IMGS = os.path.join(BASE_DIR,'media','upload_imgs')
+STATIC_ARTICLE_IMG = os.path.join(BASE_DIR,'static','uploadImgs','article')     # 文章图片上传路径
+
+STATIC_INFO_IMG = os.path.join(BASE_DIR,'static','uploadImgs','infomation')     # 公告图片上传路径
+
+STATIC_REPAIR_IMG = os.path.join(BASE_DIR,'static','uploadImgs','repair')     # 报修图片上传路径
+
+STATIC_CAROUSEL_IMG = os.path.join(BASE_DIR,'static','uploadImgs','carousel')     # 轮播图图片上传路径

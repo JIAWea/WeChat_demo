@@ -5,7 +5,7 @@ from django.http import JsonResponse
 from backend.models import *
 import json,os
 from django.views.decorators.csrf import csrf_exempt    # 局部屏蔽csrf
-from WeChatPM.settings import MEDIA_UPLOAD_IMGS
+from WeChatPM.settings import STATIC_URL,STATIC_ARTICLE_IMG,STATIC_INFO_IMG,STATIC_CAROUSEL_IMG
 from django.contrib.auth.decorators import login_required
 from backend.permissions.check_permission import check_permission
 from backend.modelForm.articleForm import articleForm
@@ -212,38 +212,79 @@ def repair_delete(request):
         return JsonResponse(response)
 
 
-# ########################################## 文章图片 ########################################
+# ########################################## 文章和公告图片接口 ########################################
 
-# 文章图片
+# 文章图片上传
 @csrf_exempt
-def img_upload(request):
+def article_img(request):
     response = {'error':0,'url':None,'message':None}
     if request.method == "POST":
         upload_img = request.FILES.get('uploadImg')
         if upload_img:
-            with open(os.path.join(MEDIA_UPLOAD_IMGS,upload_img.name),'wb') as f:
+            with open(os.path.join(STATIC_ARTICLE_IMG,upload_img.name),'wb') as f:
                 for line in upload_img.chunks():
                     f.write(line)
-            # path = os.path.join(MEDIA_UPLOAD_IMGS,upload_img.name)
-            # response['url'] = 'http:127.0.0.1:8000/%s' % str(path)      # 返回url路径
-            print('--------------------',upload_img.name)
-            response['url'] = str(upload_img.name)                      # 返回url路径
+            path = os.path.join(STATIC_URL,'uploadImgs/article/%s') % upload_img.name
+            response['url'] = str(path)                      # 返回url路径
+            # response['url'] = '/static/uploadImgs/article/img名称’      # 返回url路径
         else:
             response['error'] = 1
             response['message'] = '上传失败'
     # print('返回信息',response)
     return JsonResponse(response)
 
-# 图片显示
-def img_show(request,name):
-    with open(os.path.join(MEDIA_UPLOAD_IMGS,name), 'rb') as f:
-        image_data = f.read()
-    return HttpResponse(image_data, content_type="image/png")
-# 图片显示
-def img_edit_show(request,aid,name):
-    with open(os.path.join(MEDIA_UPLOAD_IMGS,name), 'rb') as f:
-        image_data = f.read()
-    return HttpResponse(image_data, content_type="image/png")
+# 公告图片上传
+@csrf_exempt
+def infomation_img(request):
+    response = {'error':0,'url':None,'message':None}
+    if request.method == "POST":
+        upload_img = request.FILES.get('uploadImg')
+        if upload_img:
+            with open(os.path.join(STATIC_INFO_IMG,upload_img.name),'wb') as f:
+                for line in upload_img.chunks():
+                    f.write(line)
+            path = os.path.join(STATIC_URL,'uploadImgs/infomation/%s') % upload_img.name  # 项目下路径位置 /static/uploadImgs/infomation/1.png
+            # print(os.path.join(STATIC_INFO_IMG,upload_img.name))                        # 完整路径(Windows) D:\WeChatPM\static\uploadImgs\infomation\1.png
+            response['url'] = str(path)                      # 返回url路径
+        else:
+            response['error'] = 1
+            response['message'] = '上传失败'
+    # print('返回信息',response)
+    return JsonResponse(response)
+
+# 轮播图添加
+@csrf_exempt
+def carousel_add(request):
+    response = {'status':None,'msg':None}
+    if request.method == "POST":
+        caption = request.POST.get('caption')
+        img = request.FILES.get('path')
+        if img:
+            with open(os.path.join(STATIC_CAROUSEL_IMG,img.name),'wb') as f:
+                for line in img.chunks():
+                    f.write(line)
+            path = os.path.join(STATIC_URL,'uploadImgs/carousel/%s') % img.name
+            Carousel.objects.create(caption=caption,path=path)
+            response['status'] = 200
+            response['msg'] = "上传成功"
+        else:
+            response['status'] = 400
+            response['msg'] = "图片上传失败"
+        return JsonResponse(response)
+
+# 轮播图列表
+def carousel_list(request):
+    carousel_list = Carousel.objects.all()
+    return render(request,'carousel_list.html',{'carousel_list':carousel_list})
+
+# 轮播图删除
+def carousel_delete(request,cid):
+    if cid:
+        Carousel.objects.filter(id=cid).delete()
+    return redirect('/backend/carousel/')
+
+# 轮播图编辑
+# def carousel_edit(request,cid):
 
 
 # 无权限

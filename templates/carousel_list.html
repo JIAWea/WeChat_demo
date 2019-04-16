@@ -1,0 +1,115 @@
+{% extends 'base/index.html' %}
+
+{% block title %}
+    <title>轮播图列表</title>
+{% endblock %}
+
+{% block breadcrumb %}
+    <ol class="breadcrumb" style="font-size: 18px">
+        <li><a href="{% url 'index' %}">首页</a></li>
+        <li><a style="color: grey;font-size: 25px;" href="javascript:;">轮播图列表</a></li>
+    </ol>
+{% endblock %}
+
+{% block page-content %}
+    <div>
+        <a data-toggle="modal" data-target="#carouselImg" class="btn btn-success pull-right">添加图片</a>
+
+        <div class="modal fade" id="carouselImg" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">添加图片</h4>
+                    </div>
+                    <div class="modal-body">
+                    <!--<form onsubmit="func()" method="post" action="/backend/carousel/add/" enctype="multipart/form-data">-->
+                    <form id="carsousel" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="recipient-name" class="control-label">图片描述</label>
+                            <span style="color: red;">*</span>
+                            <input type="text" class="form-control" name="caption">
+                            <span style="color: red;" id="nocaption"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="file" name="path" id="path">
+                            <span style="color: red;">*</span>
+                            <span style="color: red;" id="noimg"></span>
+                        </div>
+                        <div class="modal-footer">
+                            <a data-dismiss="modal" class="btn btn-default" >取消</a>
+                            <a id="btn-Save" class="btn btn-primary">添加</a>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>选择</th>
+                    <th>图片描述</th>
+                    <th>图片路径</th>
+                    <th>创建时间</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for carousel in carousel_list %}
+                    <tr id="{{ carousel.id }}">
+                        <td style="width: 5%;">
+                            <input type="checkbox">
+                        </td>
+                        <td style="width: 30%;">{{ carousel.caption }}</td>
+                        <td style="width: 35%;">{{ carousel.path }}</td>
+                        <td style="width: 15%;">{{ carousel.createtime|date:"Y-m-d H:i:s" }}</td>
+                        <td >
+                            <!--<a href="/backend/carousel/edit/{{ carousel.id }}/">编辑</a> |-->
+                            <a href="#" path="{{ carousel.path }}" data-toggle="modal" data-target="#carouselImgChange">编辑</a> |
+                            <a href="/backend/carousel/delete/{{ carousel.id }}/">删除</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="modal fade" id="carouselImgChange" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">修改图片</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form id="carsousel" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="recipient-name" class="control-label">图片描述</label>
+                                <span style="color: red;">*</span>
+                                <input type="text" class="form-control" name="change-caption">
+                                <span style="color: red;" id=""></span>
+                            </div>
+                            <div class="form-group">
+                                <input type="file" name="change-path" id="path">
+                                <span style="color: red;">*</span>
+                                <span style="color: red;" id=""></span>
+                            </div>
+
+                            <div class="modal-footer">
+                                <a data-dismiss="modal" class="btn btn-default" >取消</a>
+                                <a id="Change-btn" class="btn btn-primary">添加</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+{% endblock %}
+
+{% block extra-bottom-js %}
+    <script src="/static/js/carousel.js"></script>
+{% endblock %}

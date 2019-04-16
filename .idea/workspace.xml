@@ -2,30 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c672f053-565c-4f4a-b0b4-a8c2a886777c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/modelForm/articleForm.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/modelForm/infomationForm.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/permissions/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/infomation_add.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/infomation_edit.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/js/carousel.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/carousel_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/aad2a085-560a-40b3-af49-7967ea5fe59d.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/aad2a085-560a-40b3-af49-7967ea5fe59d.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WeChatPM/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/WeChatPM/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/views/account.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/views/account.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/views/acount.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/acount.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/views/check_permission.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/permissions/check_permission.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/views/home.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/home.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/views/permissions.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/permissions/permissions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/nifty.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/nifty.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/articles_add.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article_add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/articles_edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article_edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/articles_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/articles_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/upload_imgs/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/upload_imgs/1_KRfO4QK.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/upload_imgs/1_WrLbULd.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/upload_imgs/QQ图片20190401162535.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/upload_imgs/小程序.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/nifty.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/article_add.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article_add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/article_edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article_edit.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/info_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/infomation_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/repair_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/repair_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/reporting_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/reporting_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/superusers_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/superusers_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/users_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/infomation_add.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/infomation_add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/infomation_edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/infomation_edit.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -69,92 +66,40 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="10" column="23" lean-forward="true" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
-              <folding>
-                <element signature="e#0#32#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="204" column="10" selection-start-line="204" selection-start-column="4" selection-end-line="204" selection-end-column="10" />
-              <folding>
-                <element signature="e#0#28#0" expanded="true" />
-                <element signature="e#255#1075#0" />
-                <element signature="e#1135#2164#0" />
-                <element signature="e#2210#3917#0" />
-                <element signature="e#3954#4497#0" />
-                <element signature="e#4532#4956#0" />
-                <element signature="e#4988#5478#0" />
-                <element signature="e#5519#5743#0" />
-                <element signature="e#6429#6655#0" />
-                <element signature="e#6695#7540#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/views/account.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="160" lean-forward="true" selection-start-line="160" selection-end-line="160" />
-              <folding>
-                <element signature="e#0#107#0" expanded="true" />
-                <element signature="e#195#220#0" />
-                <element signature="e#927#1773#0" />
-                <element signature="e#3672#5346#0" />
-                <element signature="e#3731#4419#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/article_add.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="41" column="54" selection-start-line="41" selection-start-column="54" selection-end-line="41" selection-end-column="54" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="7" column="39" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="39" />
-              <folding>
-                <element signature="e#0#40#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/views/home.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="354">
-              <caret line="230" column="13" lean-forward="true" selection-start-line="230" selection-start-column="13" selection-end-line="230" selection-end-column="13" />
+            <state relative-caret-position="225">
+              <caret line="286" column="33" lean-forward="true" selection-start-line="286" selection-start-column="33" selection-end-line="286" selection-end-column="33" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
+                <element signature="e#7728#8441#0" />
+                <element signature="e#8498#9329#0" />
+                <element signature="e#9403#9919#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/WeChatPM/settings.py">
+        <entry file="file://$PROJECT_DIR$/templates/carousel_list.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="239">
-              <caret line="129" lean-forward="true" selection-start-line="129" selection-end-line="129" />
+              <caret line="98" lean-forward="true" selection-start-line="98" selection-end-line="98" />
+              <folding>
+                <element signature="e#1685#1704#0#HTML" expanded="true" />
+                <element signature="e#4460#4479#0#HTML" expanded="true" />
+                <element signature="e#4687#4706#0#HTML" expanded="true" />
+                <element signature="e#4750#4769#0#HTML" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/js/carousel.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="281">
+              <caret line="30" column="34" selection-start-line="30" selection-start-column="27" selection-end-line="30" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -166,8 +111,8 @@
       <list>
         <option value="HTML File" />
         <option value="CSS File" />
-        <option value="JavaScript File" />
         <option value="Python Script" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -184,7 +129,6 @@
       <find>Hello</find>
       <find>pad-all</find>
       <find>infomation_list</find>
-      <find>添加</find>
       <find>添</find>
       <find>MEDI</find>
       <find>aid</find>
@@ -201,8 +145,9 @@
       <find>文章列表</find>
       <find>#scroll-top</find>
       <find>首页</find>
-      <find>#mainnav-menu-wrap</find>
       <find>201</find>
+      <find>#mainnav-menu-wrap</find>
+      <find>添加</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -211,10 +156,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/backend/modelForm/repairform.py" />
-        <option value="$PROJECT_DIR$/../wssc/wssc/frontend/dist/templates.html" />
-        <option value="$PROJECT_DIR$/api/views/user.py" />
-        <option value="$PROJECT_DIR$/api/views/userinfo.py" />
         <option value="$PROJECT_DIR$/templates/repair_list.back.html" />
         <option value="$PROJECT_DIR$/static/css/list-css.css" />
         <option value="$PROJECT_DIR$/static/js/perfect-curd.js" />
@@ -233,7 +174,6 @@
         <option value="$PROJECT_DIR$/backend/admin.py" />
         <option value="$PROJECT_DIR$/templates/403.html" />
         <option value="$PROJECT_DIR$/WeChatPM/urls.py" />
-        <option value="$PROJECT_DIR$/WeChatPM/settings.py" />
         <option value="$PROJECT_DIR$/backend/views/check_permission.py" />
         <option value="$PROJECT_DIR$/backend/views/permissions.py" />
         <option value="$PROJECT_DIR$/static/js/users_list.js" />
@@ -241,35 +181,40 @@
         <option value="$PROJECT_DIR$/static/js/reporting_list.js" />
         <option value="$PROJECT_DIR$/static/js/repair_list.js" />
         <option value="$PROJECT_DIR$/static/js/index.js" />
-        <option value="$PROJECT_DIR$/templates/infomation_add.html" />
         <option value="$PROJECT_DIR$/templates/articles_list.html" />
         <option value="$PROJECT_DIR$/backend/modelForm/infomationForm.py" />
         <option value="$PROJECT_DIR$/backend/modelForm/articleForm.py" />
-        <option value="$PROJECT_DIR$/templates/article_add.html" />
-        <option value="$PROJECT_DIR$/templates/infomation_edit.html" />
-        <option value="$PROJECT_DIR$/templates/article_edit.html" />
         <option value="$PROJECT_DIR$/templates/users_list.html" />
         <option value="$PROJECT_DIR$/templates/superusers_list.html" />
         <option value="$PROJECT_DIR$/templates/infomation_list.html" />
-        <option value="$PROJECT_DIR$/templates/base/index.html" />
-        <option value="$PROJECT_DIR$/static/css/nifty.min.css" />
         <option value="$PROJECT_DIR$/templates/reporting_list.html" />
         <option value="$PROJECT_DIR$/backend/views/acount.py" />
         <option value="$PROJECT_DIR$/templates/repair_list.html" />
+        <option value="$PROJECT_DIR$/templates/infomation_add.html" />
+        <option value="$PROJECT_DIR$/templates/article_add.html" />
+        <option value="$PROJECT_DIR$/templates/article_edit.html" />
+        <option value="$PROJECT_DIR$/templates/infomation_edit.html" />
+        <option value="$PROJECT_DIR$/static/css/nifty.min.css" />
+        <option value="$PROJECT_DIR$/templates/carousel.html" />
         <option value="$PROJECT_DIR$/backend/models.py" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
-        <option value="$PROJECT_DIR$/api/urls.py" />
-        <option value="$PROJECT_DIR$/backend/urls.py" />
-        <option value="$PROJECT_DIR$/api/views/account.py" />
+        <option value="$PROJECT_DIR$/templates/carousel_add.html" />
+        <option value="$PROJECT_DIR$/WeChatPM/settings.py" />
         <option value="$PROJECT_DIR$/backend/views/home.py" />
+        <option value="$PROJECT_DIR$/backend/urls.py" />
+        <option value="$PROJECT_DIR$/api/urls.py" />
+        <option value="$PROJECT_DIR$/api/views/account.py" />
+        <option value="$PROJECT_DIR$/templates/base/index.html" />
+        <option value="$PROJECT_DIR$/static/js/carousel.js" />
+        <option value="$PROJECT_DIR$/templates/carousel_list.html" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="428" />
-    <option name="y" value="72" />
-    <option name="width" value="1300" />
-    <option name="height" value="790" />
+    <option name="x" value="470" />
+    <option name="y" value="75" />
+    <option name="width" value="1280" />
+    <option name="height" value="713" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -277,7 +222,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -285,10 +229,38 @@
               <item name="WeChatPM" type="b2602c69:ProjectViewProjectNode" />
               <item name="WeChatPM" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="WeChatPM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WeChatPM" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="WeChatPM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WeChatPM" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="WeChatPM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WeChatPM" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="WeChatPM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WeChatPM" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="base" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="WeChatPM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WeChatPM" type="462c0819:PsiDirectoryNode" />
+              <item name="WeChatPM" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -296,26 +268,26 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.console.LAST_STATE" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../新建文件夹/day76_Cmdb_CURD" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../新建文件夹/day62_Ajax/day62_Ajax" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\WeChatPM\backend\modelForm" />
-      <recent name="D:\WeChatPM\templates" />
-      <recent name="D:\WeChatPM\templatetags" />
-      <recent name="D:\WeChatPM\static\js" />
-      <recent name="D:\WeChatPM\backend" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\WeChatPM\backend\permissions" />
       <recent name="D:\WeChatPM\templates" />
       <recent name="D:\WeChatPM\static" />
       <recent name="D:\WeChatPM\utils\dropzone" />
       <recent name="D:\WeChatPM\templates\base" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\WeChatPM\templates" />
+      <recent name="D:\WeChatPM\static\css" />
+      <recent name="D:\WeChatPM\backend\modelForm" />
+      <recent name="D:\WeChatPM\templatetags" />
+      <recent name="D:\WeChatPM\static\js" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -380,21 +352,22 @@
       <workItem from="1555290260010" duration="593000" />
       <workItem from="1555291831742" duration="384000" />
       <workItem from="1555292839766" duration="24731000" />
+      <workItem from="1555379281297" duration="23621000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="249670000" />
+    <option name="totallyTimeSpent" value="273291000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15683647" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15884718" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.33286119" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.33144477" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -410,74 +383,13 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="SciView" order="3" />
-      <window_info anchor="right" id="Database" order="4" weight="0.19168901" />
+      <window_info anchor="right" id="Database" order="4" weight="0.22050938" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="das://aad2a085-560a-40b3-af49-7967ea5fe59d/schema/wcpm/table/auth_group">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://aad2a085-560a-40b3-af49-7967ea5fe59d/schema/wcpm/table/backend_backenduser_groups">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://aad2a085-560a-40b3-af49-7967ea5fe59d/schema/wcpm/table/backend_backenduser_user_permissions">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.virtualenvs/WeChatPM/Lib/site-packages/django/contrib/auth/base_user.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-28">
-          <caret line="104" column="11" lean-forward="true" selection-start-line="104" selection-start-column="11" selection-end-line="104" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://aad2a085-560a-40b3-af49-7967ea5fe59d/schema/wcpm/table/auth_permission">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/base/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="31" column="54" selection-start-line="31" selection-start-column="54" selection-end-line="31" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="5" column="1" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.virtualenvs/WeChatPM/Lib/site-packages/django/contrib/auth/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="355" column="6" selection-start-line="355" selection-start-column="6" selection-end-line="355" selection-end-column="6" />
-          <folding>
-            <element signature="e#7026#7149#1" />
-            <element signature="e#8093#8551#0" />
-            <element signature="e#8606#8649#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/backend/apps.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -549,13 +461,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2737">
-          <caret line="119" selection-start-line="119" selection-end-line="119" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/repair_list.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3105">
@@ -624,37 +529,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/infomation_edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
-          <folding>
-            <element signature="e#1260#1286#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/nifty.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1840">
-          <caret column="9439" selection-start-column="9439" selection-end-column="9439" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/reporting_list.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
           <caret line="36" column="33" lean-forward="true" selection-start-line="36" selection-start-column="33" selection-end-line="36" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/articles_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="29" column="35" lean-forward="true" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
-          <folding>
-            <element signature="e#805#823#0#HTML" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -675,29 +553,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/article_edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/users_list.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="38" column="43" lean-forward="true" selection-start-line="38" selection-start-column="43" selection-end-line="38" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/base/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="543">
-          <caret line="252" column="49" lean-forward="true" selection-start-line="252" selection-start-column="49" selection-end-line="252" selection-end-column="49" />
-          <folding>
-            <element signature="n#header#0;n#div#0;n#!!top" />
-            <element signature="n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" />
-            <element signature="n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -761,6 +620,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/article_edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="49" column="19" lean-forward="true" selection-start-line="49" selection-start-column="19" selection-end-line="49" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/infomation_edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="56" column="14" lean-forward="true" selection-start-line="56" selection-start-column="14" selection-end-line="56" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/infomation_add.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="46" column="35" lean-forward="true" selection-start-line="46" selection-start-column="35" selection-end-line="46" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/models.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="das://aad2a085-560a-40b3-af49-7967ea5fe59d/schema/wcpm/table/backend_troubleshoot">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -768,27 +651,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/urls.py">
+    <entry file="file://$PROJECT_DIR$/static/css/nifty.min.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="10" column="23" lean-forward="true" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="65">
+          <caret column="9888" selection-start-column="9888" selection-end-column="9888" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/infomation_add.html">
+    <entry file="file://$PROJECT_DIR$/static/css/nifty.min.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="48" column="47" selection-start-line="48" selection-start-column="47" selection-end-line="48" selection-end-column="47" />
+        <state relative-caret-position="187">
+          <caret column="10007" selection-start-column="10007" selection-end-column="10007" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/articles_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="667">
+          <caret line="29" column="35" lean-forward="true" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/article_add.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="966">
+          <caret line="42" column="39" selection-start-line="42" selection-start-column="39" selection-end-line="42" selection-end-column="39" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="204" column="10" selection-start-line="204" selection-start-column="4" selection-end-line="204" selection-end-column="10" />
+        <state relative-caret-position="492">
+          <caret line="248" lean-forward="true" selection-start-line="248" selection-end-line="248" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
             <element signature="e#255#1075#0" />
@@ -798,57 +692,115 @@
             <element signature="e#4532#4956#0" />
             <element signature="e#4988#5478#0" />
             <element signature="e#5519#5743#0" />
-            <element signature="e#6429#6655#0" />
-            <element signature="e#6695#7540#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/views/account.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="160" lean-forward="true" selection-start-line="160" selection-end-line="160" />
-          <folding>
-            <element signature="e#0#107#0" expanded="true" />
-            <element signature="e#195#220#0" />
-            <element signature="e#927#1773#0" />
-            <element signature="e#3672#5346#0" />
-            <element signature="e#3731#4419#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/article_add.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="41" column="54" selection-start-line="41" selection-start-column="54" selection-end-line="41" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="7" column="39" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/views/home.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="230" column="13" lean-forward="true" selection-start-line="230" selection-start-column="13" selection-end-line="230" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#5780#6415#0" />
+            <element signature="e#6455#6681#0" />
+            <element signature="e#6721#7573#0" />
+            <element signature="e#7607#7832#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WeChatPM/settings.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="146" lean-forward="true" selection-start-line="146" selection-end-line="146" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2737">
+          <caret line="119" selection-start-line="119" selection-end-line="119" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://aad2a085-560a-40b3-af49-7967ea5fe59d/schema/wcpm/table/backend_carousel">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/uploadImgs/carousel/小程序.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/uploadImgs/carousel/1.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/views/account.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="261" column="32" selection-start-line="261" selection-start-column="32" selection-end-line="261" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#107#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="48" column="64" lean-forward="true" selection-start-line="48" selection-start-column="64" selection-end-line="48" selection-end-column="64" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="18" column="34" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/views/home.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="286" column="33" lean-forward="true" selection-start-line="286" selection-start-column="33" selection-end-line="286" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#7728#8441#0" />
+            <element signature="e#8498#9329#0" />
+            <element signature="e#9403#9919#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/carousel_add.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="26" column="18" lean-forward="true" selection-start-line="26" selection-start-column="18" selection-end-line="26" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/base/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-98">
+          <caret line="349" column="72" selection-start-line="349" selection-start-column="72" selection-end-line="349" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/carousel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="30" column="34" selection-start-line="30" selection-start-column="27" selection-end-line="30" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/carousel_list.html">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="239">
-          <caret line="129" lean-forward="true" selection-start-line="129" selection-end-line="129" />
+          <caret line="98" lean-forward="true" selection-start-line="98" selection-end-line="98" />
+          <folding>
+            <element signature="e#1685#1704#0#HTML" expanded="true" />
+            <element signature="e#4460#4479#0#HTML" expanded="true" />
+            <element signature="e#4687#4706#0#HTML" expanded="true" />
+            <element signature="e#4750#4769#0#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
