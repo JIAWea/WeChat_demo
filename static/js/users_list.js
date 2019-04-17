@@ -2,10 +2,9 @@ $(function () {
     bindCheckAll();
     bindReverselAll();
     bindCancelAll();
-    bindIsSuper();
+    /*bindIsSuper();*/
     bindDelBtn();
     bindAuthen();
-
 });
 
 // 全选
@@ -39,13 +38,12 @@ function bindCancelAll() {
             $(this).prop('checked',false);
             if($('#editBtn').hasClass('btn-warning')){
                 $(this).prop('checked',false);
-                trOutEditMode($(this).parent().parent());
             }
         })
     });
 }
 // 通过认证
-function bindIsSuper() {
+/*function bindIsSuper() {
     $("#superBtn").click(function () {
         csrftoken();
         var postList = [];
@@ -55,13 +53,18 @@ function bindIsSuper() {
                 postList.push($(this).attr('id'));      // 选择的id
             });
             //console.log(postList);                       // [1,2,3]
+            var status = null;
 
             if(postList != ''){
                 $.ajax({
                 url: '/backend/users/',
                 type: 'POST',
                 dataType: 'JSON',
-                data: JSON.stringify(postList),
+                // data: JSON.stringify(postList),
+                data: JSON.stringify({
+                    'postList':postList,
+                    'value':'True'
+                }),
                 success:function (arg) {
                     if(arg.status){
                         alert(arg.msg);
@@ -76,7 +79,7 @@ function bindIsSuper() {
             alert('请选择要设置的用户')
         }
     });
-}
+}*/
 // 删除
 function bindDelBtn() {
     $("#delBtn").click(function () {
@@ -116,9 +119,47 @@ function bindDelBtn() {
 
 //设置认证
 function bindAuthen() {
-    //$("button[name='superBtn']").click(function () {
+    $("button[name='superBtn']").click(function () {
+        var status = null;
+        if($(this).text()=="通过认证"){
+            status = 'True'
+        }else {
+            status = 'False'
+        }
+        csrftoken();
+        var postList = [];
+        var tr = $(":checked").parent().parent();
+        if(tr.length != 0){
+            tr.each(function(){
+                postList.push($(this).attr('id'));      // 选择的id
+            });
+            //console.log(postList);                       // [1,2,3]
 
-   // })
+            if(postList != ''){
+                $.ajax({
+                url: '/backend/users/',
+                type: 'POST',
+                dataType: 'JSON',
+                // data: JSON.stringify(postList),
+                data: JSON.stringify({
+                    'postList':postList,
+                    'value':status
+                }),
+                success:function (arg) {
+                    if(arg.status){
+                        alert(arg.msg);
+                        window.location.reload();
+                    }else {
+                        alert(arg.msg);
+                    }
+                }
+            });
+            }
+        }else{
+            alert('请选择要设置的用户')
+        }
+
+    })
 }
 
 function csrftoken() {

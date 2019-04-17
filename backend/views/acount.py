@@ -113,17 +113,19 @@ def users_list(request):
         content = request.body                      # 字节
         content = str(content, encoding='utf-8')    # 字符串
         result = json.loads(content)
-        # print('结果', type(result))               # [1,2,3]
+        # print('结果', result,type(result))               # {'value': 'True', 'postList': ['5']} <class 'dict'>
         response = {'status':False,'msg':None}
-        for id in result:
+        # for id in result:
+        for id in result['postList']:
             if id:
                 obj = UserProfile.objects.filter(id=id).first()
-                if obj.is_superuser:
-                    response['msg'] = '该用户已经认证过了'
-                else:
-                    UserProfile.objects.filter(id=id).update(is_superuser=True)
-                    response['status'] = True
-                    response['msg'] = '设置成功'
+                # if obj.is_superuser:
+                #     response['msg'] = '该用户已经认证过了'
+                # else:
+                    # UserProfile.objects.filter(id=id).update(is_superuser=True)
+                UserProfile.objects.filter(id=id).update(is_superuser=result['value'])
+                response['status'] = True
+                response['msg'] = '设置成功'
             else:
                 response['msg'] = '设置失败'
         return JsonResponse(response)
