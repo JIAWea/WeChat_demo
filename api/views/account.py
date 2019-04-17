@@ -11,9 +11,11 @@ class account_user(View):
     # 获取信息
     def get(self,request,*args,**kwargs):
         response = {'status':200,'msg':None}
-        uid = request.GET('uid')
-        if uid:
-            user_obj = UserProfile.objects.filter(uid=uid).first()
+        uid = request.GET.get('uid','')
+
+        print(uid)
+        user_obj = UserProfile.objects.filter(uid=uid).first()
+        if user_obj:
             data={
                 'username':user_obj.username,
                 'phone':user_obj.phone,
@@ -29,13 +31,14 @@ class account_user(View):
 
     # 用户授权
     def post(self,request,*args,**kwargs):
-        try:
-            userdata = json.loads(request.body.decode('utf-8'))
-        except ValueError:
-            return HttpResponseBadRequest('请求的 JSON 无法解析')
+        # try:
+        #     userdata = json.loads(request.body.decode('utf-8'))
+        # except ValueError:
+        #     return HttpResponseBadRequest('请求的 JSON 无法解析')
+        userdata = request.POST
         response = {}
         # print(userdata)
-        uid = userdata.get("uid")
+        uid = userdata.get("uid",'')
 
         building = userdata.get("building")
         floor = userdata.get("floor")
@@ -62,11 +65,13 @@ class account_user(View):
     # 用户个人资料修改
     def put(self,request,*args,**kwargs):
         response={}
-        try:
-            userdata = json.loads(request.body.decode('utf-8'))
-        except ValueError:
-            return HttpResponseBadRequest('请求的 JSON 无法解析')
-        uid = userdata.get("uid")
+        # try:
+        #     userdata = json.loads(request.body.decode('utf-8'))
+        # except ValueError:
+        #     return HttpResponseBadRequest('请求的 JSON 无法解析')
+        userdata = request.POST
+
+        uid = userdata.get("uid",'')
 
         username = userdata.get("username")
         phone = userdata.get("phone")
@@ -88,9 +93,9 @@ class report(View):
     # 获取报装信息
     def get(self,request,*args,**kwargs):
         response = {'status': None, 'data': None, 'msg': None}
-        uid = request.GET('uid')
-        if uid:
-            user_obj = UserProfile.objects.filter(uid=uid).first()
+        uid = request.GET.get('uid','')
+        user_obj = UserProfile.objects.filter(uid=uid).first()
+        if user_obj:
             all_report = Reporting.objects.filter(user=user_obj).all()
             if all_report:
                 data = []
@@ -115,17 +120,19 @@ class report(View):
     # 提交报装信息
     def post(self,request,*args,**kwargs):
         response = {}
-        try:
-            reportdata = json.loads(request.body.decode('utf-8'))
-        except ValueError:
-            return HttpResponseBadRequest('请求的 JSON 无法解析')
+        # try:
+        #     reportdata = json.loads(request.body.decode('utf-8'))
+        # except ValueError:
+        #     return HttpResponseBadRequest('请求的 JSON 无法解析')
 
-        uid = reportdata.get("uid")
+        reportdata = request.POST
+        uid = reportdata.get("uid",'')
         type = reportdata.get("type")
         remark = reportdata.get("remark")
 
-        if uid:
-            user_obj = UserProfile.objects.filter(uid=uid).first()
+
+        user_obj = UserProfile.objects.filter(uid=uid).first()
+        if user_obj:
             Reporting.objects.create(type=type,remark=remark,user_id=user_obj.id)
             response['status'] = 200
             response['msg'] = '提交成功'
@@ -139,9 +146,10 @@ class repair(View):
     # 获取报修信息                            #############################未完
     def get(self,request,*args,**kwargs):
         response = {'status':None,'data':None,'msg':None}
-        uid = request.GET('uid')
-        if uid:
-            user_obj = UserProfile.objects.filter(uid=uid).first()          # 用户
+        uid = request.GET.get('uid','')
+
+        user_obj = UserProfile.objects.filter(uid=uid).first()          # 用户
+        if user_obj:
             all_repair = TroubleShoot.objects.filter(user=user_obj).all()
             if all_repair:
                 data = []
@@ -168,20 +176,22 @@ class repair(View):
     # 提交报修信息
     def post(self,request,*args,**kwargs):
         response = {}
-        try:
-            repairdata = json.loads(request.body.decode('utf-8'))
-        except ValueError:
-            return HttpResponseBadRequest('请求的 JSON 无法解析')
+        # try:
+        #     repairdata = json.loads(request.body.decode('utf-8'))
+        # except ValueError:
+        #     return HttpResponseBadRequest('请求的 JSON 无法解析')
 
-        uid = repairdata.get("uid")
+        repairdata = request.POST
+        uid = repairdata.get("uid",'')
 
         type = repairdata.get("type")
         content = repairdata.get("content")
         img = repairdata.get("img")
         level = repairdata.get("level")
 
-        if uid:
-            user_obj = UserProfile.objects.filter(uid=uid).first()
+
+        user_obj = UserProfile.objects.filter(uid=uid).first()
+        if user_obj:
             TroubleShoot.objects.create(type=type,content=content,img=img,level=level,user_id=user_obj.id)
             response['status'] = 200
             response['msg'] = '提交成功'
@@ -245,7 +255,6 @@ def infomation(request):
         response['data'] = ""
         response['msg'] = "获取成功,暂时无公告信息"
     return JsonResponse(response)
-
 
 # 轮播图
 def carousel(request):

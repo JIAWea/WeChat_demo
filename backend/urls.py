@@ -9,14 +9,14 @@ urlpatterns = [
     url(r'articles/$',home.articles_list,name='articles_list'),
     url(r'article/add/$',home.articles_add,name='article_add'),
     url(r'article/edit/(?P<aid>(\d+))/$',home.article_edit),
-    url(r'article/delete/(?P<aid>(\d+))/$',home.article_delete),
+    url(r'article/delete/$',home.article_delete),
     url(r'article/upload-img/',home.article_img),                          # 文章图片
 
 
     # 公告列表
     url(r'infomation/$',home.infomation_list,name='infomation_list'),
     url(r'infomation/add/$',home.infomation_add,name='infomation_add'),
-    url(r'infomation/delete/(?P<iid>(\d+))/$',home.infomation_delete),
+    url(r'infomation/delete/$',home.infomation_delete),
     url(r'infomation/edit/(?P<iid>(\d+))/$',home.infomation_edit),
     url(r'infomation/upload-img/$',home.infomation_img),                # 公告图片
 
@@ -45,8 +45,9 @@ urlpatterns = [
     # 轮播图
     url(r'carousel/$',home.carousel_list,name='carousel_list'),
     url(r'carousel/add/$',home.carousel_add,name='carousel_add'),
-    url(r'carousel/delete/(?P<cid>(\d+))/$',home.carousel_delete),
-    # url(r'carousel/edit/(?P<cid>(\d+))/$',home.carousel_edit),
+    url(r'carousel/delete/$',home.carousel_delete),
+    # url(r'carousel/delete/(?P<cid>(\d+))/$',home.carousel_delete),
+    url(r'carousel/edit/$',home.carousel_edit),
 
     # 无权限
     url(r'permissiondenied/$',home.permission_denied),

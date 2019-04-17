@@ -41,7 +41,7 @@
                         <td style="width:10%">{{ repair.type }}</td>
                         <td style="width:10%">{{ repair.user }}</td>
                         <td>{{ repair.content }}</td>
-                        <td>{{ repair.img }}</td>
+                        <td><a target="_blank" href="{{ repair.img }}">{{ repair.img }}</a></td>
                         <td>{{ repair.createtime|date:"Y-m-d H:i:s" }}</td>
                         <td style="width:8%">{{ repair.get_status_display }}</td>
                     </tr>

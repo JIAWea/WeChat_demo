@@ -62,10 +62,21 @@ def article_edit(request,aid):
 # 文章删除
 @check_permission('backend.article_manager')
 @login_required
-def article_delete(request,aid):
+def article_delete(request):
+    # if aid:
+    #     Article.objects.filter(id=aid).delete()
+    # return redirect('/backend/articles/')
+
+    response = {'status': True, 'msg': None}
+    aid = request.POST.get('aid')
     if aid:
         Article.objects.filter(id=aid).delete()
-    return redirect('/backend/articles/')
+        response['msg'] = '删除成功'
+    else:
+        response['status'] = False
+        response['msg'] = '删除失败'
+    # return redirect('/backend/carousel/')
+    return JsonResponse(response)
 
 
 # 公告列表
@@ -90,10 +101,20 @@ def infomation_add(request):
 # 公告删除
 @check_permission('backend.info_manager')
 @login_required
-def infomation_delete(request,iid):
+def infomation_delete(request):
+    # if iid:
+    #     Info.objects.filter(id=iid).delete()
+    # return redirect('/backend/infomation/')
+    response = {'status': True, 'msg': None}
+    iid = request.POST.get('iid')
     if iid:
         Info.objects.filter(id=iid).delete()
-    return redirect('/backend/infomation/')
+        response['msg'] = '删除成功'
+    else:
+        response['status'] = False
+        response['msg'] = '删除失败'
+    # return redirect('/backend/carousel/')
+    return JsonResponse(response)
 
 # 公告编辑
 @check_permission('backend.info_manager')
@@ -278,14 +299,41 @@ def carousel_list(request):
     return render(request,'carousel_list.html',{'carousel_list':carousel_list})
 
 # 轮播图删除
-def carousel_delete(request,cid):
+def carousel_delete(request):
+    response = {'status':True,'msg':None}
+    cid = request.POST.get('cid')
     if cid:
         Carousel.objects.filter(id=cid).delete()
-    return redirect('/backend/carousel/')
+        response['msg'] = '删除成功'
+    else:
+        response['status'] = False
+        response['msg'] = '删除失败'
+    # return redirect('/backend/carousel/')
+    return JsonResponse(response)
 
 # 轮播图编辑
-# def carousel_edit(request,cid):
-
+@csrf_exempt
+def carousel_edit(request):
+    response = {'status': None, 'msg': None}
+    if request.method == "POST":
+        caption = request.POST.get('caption')
+        cid = request.POST.get('cid')
+        img = request.FILES.get('path')
+        if img:
+            try:
+                with open(os.path.join(STATIC_CAROUSEL_IMG, img.name), 'wb') as f:
+                    for line in img.chunks():
+                        f.write(line)
+                path = os.path.join(STATIC_URL, 'uploadImgs/carousel/%s') % img.name
+                Carousel.objects.filter(id=cid).update(caption=caption,path=path)
+                response['status'] = 200
+                response['msg'] = "更改成功"
+            except Exception as e:
+                response['msg'] = "图片更改失败"
+        else:
+            response['status'] = 400
+            response['msg'] = "图片更改失败"
+        return JsonResponse(response)
 
 # 无权限
 def permission_denied(request):

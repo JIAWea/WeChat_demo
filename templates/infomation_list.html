@@ -42,7 +42,7 @@
                         <td>{{ info.createtime|date:"Y-m-d H:i:s" }}</td>
                         <td>
                             <a href="/backend/infomation/edit/{{ info.id }}/">编辑</a> |
-                            <a href="/backend/infomation/delete/{{ info.id }}/">删除</a>
+                            <a href="javascript:;" onclick="delInfo({{ info.id }})">删除</a>
                         </td>
                     </tr>
                 {% endfor %}
@@ -53,6 +53,5 @@
 
 
 {% block extra-bottom-js %}
-
-
+    <script src="/static/js/info_list.js"></script>
 {% endblock %}

@@ -111,7 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
-AUTH_USER_MODEL = 'backend.BackendUser'                 # 用户登录验证
+AUTH_USER_MODEL = 'backend.BackendUser'                 # 自定制用户登录验证
 
 # LANGUAGE_CODE = 'en-us'
 LANGUAGE_CODE = 'zh-Hans'
@@ -135,9 +135,9 @@ STATICFILES_DIRS = (
 
 LOGIN_URL = '/login/'           # 要跳转的下一页的url
 
-# SESSION_COOKIE_AGE = 60 * 30            # 30分钟
-# SESSION_SAVE_EVERY_REQUEST = True
-# SESSION_EXPIRE_AT_BROWSER_CLOSE = True # 关闭浏览器，则COOKIE失效
+# SESSION_COOKIE_AGE = 60 * 30              # 单位是秒
+SESSION_SAVE_EVERY_REQUEST = True           # 每次请求都保留session
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True      # 关闭浏览器，则COOKIE失效
 
 STATIC_ARTICLE_IMG = os.path.join(BASE_DIR,'static','uploadImgs','article')     # 文章图片上传路径
 

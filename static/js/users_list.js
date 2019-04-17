@@ -4,6 +4,8 @@ $(function () {
     bindCancelAll();
     bindIsSuper();
     bindDelBtn();
+    bindAuthen();
+
 });
 
 // 全选
@@ -110,6 +112,13 @@ function bindDelBtn() {
             }
         }
     });
+}
+
+//设置认证
+function bindAuthen() {
+    //$("button[name='superBtn']").click(function () {
+
+   // })
 }
 
 function csrftoken() {
