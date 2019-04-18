@@ -31,6 +31,7 @@ urlpatterns = [
 
     # 企业联系人用户的用户列表
     url(r'superusers/$',acount.superusers_list,name='superusers_list'),
+    url(r'superusers/bluk-add/$',acount.superusers_blukadd,name='superusers_blukadd'),
     url(r'superusers/delete/$',acount.superusers_delete,name='superusers_delete'),
 
     # 所有关注小程序的用户列表

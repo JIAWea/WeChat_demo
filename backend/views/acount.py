@@ -2,9 +2,14 @@ from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate,login,logout
 from backend.models import *
 from django.http import JsonResponse
-import json
+import json,os
+import uuid
 from backend.permissions.permissions import *
 from backend.permissions.check_permission import check_permission
+from django.views.decorators.csrf import csrf_exempt
+from WeChatPM.settings import USER_UP_XLSX
+from backend.xlsxHandler import xlsxHandler
+
 
 # 后台用户登录
 def ac_login(request):
@@ -163,6 +168,7 @@ def superusers_list(request):
     superusers_all = SuperUser.objects.all().order_by('-id')
     return render(request, 'superusers_list.html',{'superusers_all':superusers_all})
 
+# 企业关联用户删除
 @check_permission('backend.user_manager')
 @login_required
 def superusers_delete(request):
@@ -184,3 +190,41 @@ def superusers_delete(request):
             else:
                 response['msg'] = '删除失败'
         return JsonResponse(response)
+
+# 批量导入企业用户
+@csrf_exempt
+@check_permission('backend.user_manager')
+@login_required
+def superusers_blukadd(request):
+    response = {'status':True}
+    if request.method == "POST":
+        # print(request.FILES)
+        uploadedFile = request.FILES.get('file')
+        # print(uploadedFile.size)      # 文件大小
+        name,layout = uploadedFile.name.split(".")
+        # print(name,layout)
+        if uploadedFile.size > 1048576:     # 1048576字节 == 1M
+            return JsonResponse({"status":False,"msg":"导入失败，文件大小不能超过1M"})
+        elif layout != 'xlsx':
+            return JsonResponse({"status":False,"msg":"导入失败，表格必须为xlsx格式"})
+
+        if uploadedFile:
+            # with open('C:\\Users\\admin\\Desktop\\100.xlsx', 'wb') as f:
+            #     for line in uploadedFile.chunks():
+            #         f.write(line)
+            nid = str(uuid.uuid4())  # 生成随机数作为路径
+            path_file = os.path.join(USER_UP_XLSX, nid + uploadedFile.name)
+            with open(path_file, 'wb') as f:
+                for line in uploadedFile.chunks():
+                    f.write(line)                   # 保存到本地路径
+            local_path = path_file
+            print('local_path',local_path)
+            ret = xlsxHandler(local_path)             # 写入数据库
+            if ret == '导入成功':
+                response['msg'] = '导入成功'
+            else:
+                response['status'] = False
+                response['msg'] = ret
+        else:
+            return HttpResponse('无文件')
+    return JsonResponse(response)

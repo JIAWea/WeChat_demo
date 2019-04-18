@@ -146,3 +146,5 @@ STATIC_INFO_IMG = os.path.join(BASE_DIR,'static','uploadImgs','infomation')     
 STATIC_REPAIR_IMG = os.path.join(BASE_DIR,'static','uploadImgs','repair')     # 报修图片上传路径
 
 STATIC_CAROUSEL_IMG = os.path.join(BASE_DIR,'static','uploadImgs','carousel')     # 轮播图图片上传路径
+
+USER_UP_XLSX = os.path.join(BASE_DIR,'uploads','xlsx')     # 轮播图图片上传路径

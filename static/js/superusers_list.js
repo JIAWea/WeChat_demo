@@ -1,8 +1,18 @@
 $(function () {
+        bindCheckAll();
+        bindReverselAll();
+        bindCancelAll();
         bindDelBtn();
+        bindImportAll();
     });
 
-    function bindDelBtn() {
+// 批量导入
+function bindImportAll() {
+
+}
+
+// 删除用户
+function bindDelBtn() {
     $("#delBtn").click(function () {
         var mymessage=confirm("您确定要删除所选择的用户吗?");
         if(mymessage==true){
@@ -37,6 +47,45 @@ $(function () {
         }
     });
 }
+
+// 全选
+function bindCheckAll() {
+    $('#checkAll').click(function () {
+        $('#table_tb').find(':checkbox').each(function () {
+           if($(this).prop('checked')){
+               // 已经是选中了，无需再选中
+           }else {
+               $(this).prop('checked',true);
+           }
+        });
+    });
+}
+// 反选
+function bindReverselAll() {
+    $('#reverselAll').click(function () {
+        $('#table_tb').find(':checkbox').each(function () {
+           if($(this).prop('checked')){
+               $(this).prop('checked',false);
+           }else {
+               $(this).prop('checked',true);
+           }
+        });
+    });
+}
+
+// 取消
+function bindCancelAll() {
+    $('#cancelAll').click(function () {
+        $('#table_tb').find(':checked').each(function () {
+            $(this).prop('checked',false);
+            if($('#editBtn').hasClass('btn-warning')){
+                $(this).prop('checked',false);
+            }
+        })
+    });
+}
+
+// csrf
 function csrftoken() {
     /*********** csrftoken开始****************/
     function getCookie(name) {
