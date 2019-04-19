@@ -275,11 +275,19 @@ def infomation_img(request):
 
 # 轮播图添加
 @csrf_exempt
+@login_required
 def carousel_add(request):
     response = {'status':None,'msg':None}
     if request.method == "POST":
         caption = request.POST.get('caption')
         img = request.FILES.get('path')
+        # print(img.name)
+        name,layout = img.name.split(".")
+        print(layout)
+        if layout != 'png' and layout != 'jpeg' and layout != 'jpg':
+            response['status'] = 400
+            response['msg'] = '只能上传格式为png/jpg/jpeg的图片'
+            return JsonResponse(response)
         if img:
             with open(os.path.join(STATIC_CAROUSEL_IMG,img.name),'wb') as f:
                 for line in img.chunks():
@@ -294,11 +302,14 @@ def carousel_add(request):
         return JsonResponse(response)
 
 # 轮播图列表
+@check_permission('backend.carousel_manager')
+@login_required
 def carousel_list(request):
     carousel_list = Carousel.objects.all()
     return render(request,'carousel_list.html',{'carousel_list':carousel_list})
 
 # 轮播图删除
+@login_required
 def carousel_delete(request):
     response = {'status':True,'msg':None}
     cid = request.POST.get('cid')
@@ -313,6 +324,7 @@ def carousel_delete(request):
 
 # 轮播图编辑
 @csrf_exempt
+@login_required
 def carousel_edit(request):
     response = {'status': None, 'msg': None}
     if request.method == "POST":

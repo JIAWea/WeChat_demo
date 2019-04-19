@@ -2,13 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c672f053-565c-4f4a-b0b4-a8c2a886777c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/xlsxHandler.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WeChatPM/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/WeChatPM/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/views/acount.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/acount.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/permissions/permissions.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/permissions/permissions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/views/home.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/home.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/js/superusers_list.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/superusers_list.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/superusers_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/superusers_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.txt" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -54,72 +55,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/users_list.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1265">
-              <caret line="64" column="32" lean-forward="true" selection-start-line="64" selection-start-column="32" selection-end-line="64" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/js/users_list.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-              <folding>
-                <element signature="n#!!block;n#bindCheckAll#0" />
-                <element signature="n#!!block;n#bindReverselAll#0" />
-                <element signature="n#!!block;n#bindCancelAll#0" />
-                <element signature="e#1087#2213#0" />
-                <element signature="n#!!block;n#bindDelBtn#0" />
-                <element signature="n#!!block;n#csrftoken#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/superusers_list.html">
+        <entry file="file://$PROJECT_DIR$/backend/modelForm/infomationForm.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="34" column="20" lean-forward="true" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/js/superusers_list.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="52" column="16" selection-start-line="52" selection-start-column="8" selection-end-line="52" selection-end-column="16" />
+            <state relative-caret-position="46">
+              <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
               <folding>
-                <element signature="n#!!block;n#bindDelBtn#0" />
-                <element signature="n#!!block;n#bindReverselAll#0" />
-                <element signature="n#!!block;n#bindCancelAll#0" />
-                <element signature="n#!!block;n#csrftoken#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/repair_list.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="53" column="34" selection-start-line="53" selection-start-column="34" selection-end-line="53" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/js/repair_list.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="5" column="17" lean-forward="true" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-              <folding>
-                <element signature="n#!!block;n#bindDelBtn#0" />
+                <element signature="e#0#26#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -139,7 +81,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>欢迎</find>
       <find>9</find>
       <find>配置</find>
       <find>修</find>
@@ -155,7 +96,6 @@
       <find>javascript</find>
       <find>权限</find>
       <find>modal</find>
-      <find>添加管理</find>
       <find>菜单栏</find>
       <find>shortcut</find>
       <find>plane</find>
@@ -169,6 +109,8 @@
       <find>carsousel</find>
       <find>东照</find>
       <find>user</find>
+      <find>添加管理</find>
+      <find>password</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -177,7 +119,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/templates/register.html" />
         <option value="$PROJECT_DIR$/static/js/js.js" />
         <option value="$PROJECT_DIR$/templates/img_test.html" />
         <option value="$PROJECT_DIR$/templates/articles_add.html" />
@@ -204,7 +145,6 @@
         <option value="$PROJECT_DIR$/templates/infomation_edit.html" />
         <option value="$PROJECT_DIR$/static/css/nifty.min.css" />
         <option value="$PROJECT_DIR$/templates/carousel.html" />
-        <option value="$PROJECT_DIR$/backend/models.py" />
         <option value="$PROJECT_DIR$/templates/carousel_add.html" />
         <option value="$PROJECT_DIR$/api/urls.py" />
         <option value="$PROJECT_DIR$/api/views/account.py" />
@@ -214,7 +154,6 @@
         <option value="$PROJECT_DIR$/static/js/info_list.js" />
         <option value="$PROJECT_DIR$/templates/infomation_list.html" />
         <option value="$PROJECT_DIR$/templates/articles_list.html" />
-        <option value="$PROJECT_DIR$/templates/base/index.html" />
         <option value="$PROJECT_DIR$/templates/base/base.html" />
         <option value="$PROJECT_DIR$/static/css/common.css" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
@@ -222,16 +161,19 @@
         <option value="$PROJECT_DIR$/templates/users_list.html" />
         <option value="$PROJECT_DIR$/templates/carousel_list.html" />
         <option value="$PROJECT_DIR$/backend/urls.py" />
-        <option value="$PROJECT_DIR$/backend/views/home.py" />
         <option value="$PROJECT_DIR$/WeChatPM/settings.py" />
         <option value="$PROJECT_DIR$/backend/views/acount.py" />
         <option value="$PROJECT_DIR$/backend/xlsxHandler.py" />
         <option value="$PROJECT_DIR$/templates/superusers_list.html" />
         <option value="$PROJECT_DIR$/static/js/superusers_list.js" />
+        <option value="$PROJECT_DIR$/backend/permissions/permissions.py" />
+        <option value="$PROJECT_DIR$/backend/models.py" />
+        <option value="$PROJECT_DIR$/backend/views/home.py" />
+        <option value="$PROJECT_DIR$/templates/base/index.html" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="470" />
     <option name="y" value="75" />
     <option name="width" value="1280" />
@@ -253,7 +195,23 @@
             <path>
               <item name="WeChatPM" type="b2602c69:ProjectViewProjectNode" />
               <item name="WeChatPM" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="WeChatPM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WeChatPM" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="modelForm" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="WeChatPM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WeChatPM" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="WeChatPM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WeChatPM" type="462c0819:PsiDirectoryNode" />
+              <item name="WeChatPM" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -267,7 +225,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.console.LAST_STATE" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../新建文件夹/day62_Ajax/day62_Ajax" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -301,7 +259,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.xlsxHandler">
+  <component name="RunManager" selected="Django server.WeChatPM">
     <configuration name="xlsxHandler" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="WeChatPM" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -381,22 +339,23 @@
       <workItem from="1555379281297" duration="23621000" />
       <workItem from="1555463012953" duration="29866000" />
       <workItem from="1555549692516" duration="18563000" />
+      <workItem from="1555641577285" duration="3007000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="321720000" />
+    <option name="totallyTimeSpent" value="324727000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16286863" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16487935" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3385269" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.21104816" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -405,7 +364,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.28186968" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.46600565" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="bottom" id="Database Console" order="13" weight="0.3286119" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -419,13 +378,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/reporting_add.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="34" column="32" lean-forward="true" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/backend/modelForm/repairform.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
@@ -440,16 +392,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
           <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/modelForm/infomationForm.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="14" column="9" lean-forward="true" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -601,27 +543,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="248" lean-forward="true" selection-start-line="248" selection-end-line="248" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-            <element signature="e#240#1060#0" />
-            <element signature="e#1136#2165#0" />
-            <element signature="e#2207#3914#0" />
-            <element signature="e#3951#4494#0" />
-            <element signature="e#4529#4953#0" />
-            <element signature="e#4985#5475#0" />
-            <element signature="e#5516#5740#0" />
-            <element signature="e#5777#6412#0" />
-            <element signature="e#6452#6678#0" />
-            <element signature="e#6718#7570#0" />
-            <element signature="e#7607#7832#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/article_list.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1081">
@@ -636,13 +557,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/base/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="19" lean-forward="true" selection-start-column="19" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/css/common.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="46">
@@ -654,13 +568,6 @@
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="66" column="41" lean-forward="true" selection-start-line="66" selection-start-column="41" selection-end-line="66" selection-end-column="41" />
         </state>
       </provider>
     </entry>
@@ -698,24 +605,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WeChatPM/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="148" lean-forward="true" selection-start-line="148" selection-end-line="148" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/views/home.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="283" column="54" selection-start-line="283" selection-start-column="54" selection-end-line="283" selection-end-column="54" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-            <element signature="e#11311#12163#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="das://aad2a085-560a-40b3-af49-7967ea5fe59d/schema/wcpm/table/backend_superuser">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -729,19 +618,6 @@
           <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
           <folding>
             <element signature="e#0#34#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/views/acount.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="221" column="22" selection-start-line="221" selection-start-column="22" selection-end-line="221" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#44#0" expanded="true" />
-            <element signature="e#330#825#0" />
-            <element signature="e#864#967#0" />
-            <element signature="e#1030#1930#0" />
           </folding>
         </state>
       </provider>
@@ -773,32 +649,57 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/repair_list.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
+        <state relative-caret-position="1219">
           <caret line="53" column="34" selection-start-line="53" selection-start-column="34" selection-end-line="53" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WeChatPM/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="84" column="23" lean-forward="true" selection-start-line="84" selection-start-column="23" selection-end-line="84" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/repair_list.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
-          <caret line="5" column="17" lean-forward="true" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
           <folding>
             <element signature="n#!!block;n#bindDelBtn#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/users_list.html">
+    <entry file="file://$PROJECT_DIR$/static/js/superusers_list.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1265">
-          <caret line="64" column="32" lean-forward="true" selection-start-line="64" selection-start-column="32" selection-end-line="64" selection-end-column="32" />
+        <state relative-caret-position="216">
+          <caret line="18" column="31" lean-forward="true" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
+          <folding>
+            <element signature="n#!!block;n#fileLoad#0" />
+            <element signature="n#!!block;n#bindDelBtn#0" />
+            <element signature="n#!!block;n#bindCheckAll#0" />
+            <element signature="n#!!block;n#bindReverselAll#0" />
+            <element signature="n#!!block;n#bindCancelAll#0" />
+            <element signature="n#!!block;n#csrftoken#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/superusers_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
+          <folding>
+            <element signature="n#script#1;n#!!top" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/users_list.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
           <folding>
             <element signature="n#!!block;n#bindCheckAll#0" />
             <element signature="n#!!block;n#bindReverselAll#0" />
@@ -810,23 +711,85 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/superusers_list.js">
+    <entry file="file://$PROJECT_DIR$/backend/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="52" column="16" selection-start-line="52" selection-start-column="8" selection-end-line="52" selection-end-column="16" />
+        <state relative-caret-position="218">
+          <caret line="78" lean-forward="true" selection-start-line="78" selection-end-line="78" />
           <folding>
-            <element signature="n#!!block;n#bindDelBtn#0" />
-            <element signature="n#!!block;n#bindReverselAll#0" />
-            <element signature="n#!!block;n#bindCancelAll#0" />
-            <element signature="n#!!block;n#csrftoken#0" />
+            <element signature="e#0#28#0" expanded="true" />
+            <element signature="e#240#1060#0" />
+            <element signature="e#2207#3914#0" />
+            <element signature="e#3951#4494#0" />
+            <element signature="e#4529#4953#0" />
+            <element signature="e#4985#5475#0" />
+            <element signature="e#5516#5740#0" />
+            <element signature="e#5777#6412#0" />
+            <element signature="e#6452#6678#0" />
+            <element signature="e#6718#7570#0" />
+            <element signature="e#7607#7832#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/superusers_list.html">
+    <entry file="file://$PROJECT_DIR$/backend/permissions/permissions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="34" column="20" lean-forward="true" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="20" />
+        <state relative-caret-position="-543">
+          <caret line="17" column="31" lean-forward="true" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="597">
+          <caret line="66" column="41" selection-start-line="66" selection-start-column="30" selection-end-line="66" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/base/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="387">
+          <caret line="363" column="44" selection-start-line="363" selection-start-column="44" selection-end-line="363" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/views/home.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-117">
+          <caret line="267" column="114" selection-start-line="267" selection-start-column="114" selection-end-line="267" selection-end-column="114" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#6547#7422#0" />
+            <element signature="e#7523#8254#0" />
+            <element signature="e#8406#9119#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/views/acount.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2">
+          <caret line="48" column="7" lean-forward="true" selection-start-line="48" selection-start-column="7" selection-end-line="48" selection-end-column="7" />
+          <folding>
+            <element signature="e#0#44#0" expanded="true" />
+            <element signature="e#6851#8229#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/users_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/modelForm/infomationForm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -74,6 +74,7 @@ class BackendUser(AbstractBaseUser,PermissionsMixin):
             ('info_manager','公告管理'),
             ('reporting_manager','报装管理'),
             ('repair_manager','报修管理'),
+            ('carousel_manager','轮播管理'),
         )
 
 

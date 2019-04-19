@@ -1,4 +1,5 @@
 $(function () {
+        bindUplodImg();
         bindCheckAll();
         bindReverselAll();
         bindCancelAll();
@@ -9,6 +10,56 @@ $(function () {
 // 批量导入
 function bindImportAll() {
 
+}
+
+// Excel批量导入用户判断
+function bindUplodImg() {
+    var $input =  $("#filexlsx");
+    // ①为input设定change事件
+    $input.change(function () {
+    //    ②如果value不为空，调用文件加载方法
+        if($(this).val() != ""){
+            if($("#filexlsx")[0].files[0].name.split(".")[1] != "xlsx"){    // 获取上传格式
+                alert("导入失败，表格必须为xlsx格式")
+            }else if($("#filexlsx")[0].files[0].size > 1048576){
+                alert("文件大小必须小于1M")
+            } else {
+                fileLoad(this);
+            }
+        }
+    })
+}
+// Excel批量导入用户
+function fileLoad(ele){
+      //④创建一个formData对象
+    var formData = new FormData();
+    //⑤获取传入元素的val
+    var name = $(ele).val();
+      //⑥获取files
+    var files = $(ele)[0].files[0];
+    //⑦将name 和 files 添加到formData中，键值对形式
+    formData.append("file", files);
+    formData.append("name", name);
+    $.ajax({
+        url: "/backend/superusers/bluk-add/",
+        type: 'POST',
+        data: formData,
+        processData: false,// ⑧告诉jQuery不要去处理发送的数据
+        contentType: false, // ⑨告诉jQuery不要去设置Content-Type请求头
+        success: function (arg) {
+           //11成功后的动作
+            if(arg.status){
+                alert("导入成功");
+                window.location.reload()
+            }else {
+                alert(arg.msg);
+            }
+        },
+        error : function (responseStr) {
+            //12出错后的动作
+            alert("出错啦");
+        }
+    });
 }
 
 // 删除用户

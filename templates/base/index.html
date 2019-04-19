@@ -214,6 +214,9 @@
                                             <span class="perm">报修管理
                                                 <input class="perm-input" type="checkbox" name="permissionList" value="4">
                                             </span>
+                                            <span class="perm">轮播管理
+                                                <input class="perm-input" type="checkbox" name="permissionList" value="5">
+                                            </span>
                                         </p>
                                     </div>
 
@@ -344,7 +347,7 @@
 										</ul>
 									</li>
                                     {% endif %}
-
+                                    {% if 'backend.carousel_manager' in perms %}
                                     <li>
 										<a href="#">
 											<i class="fa fa-file-image-o"></i>
@@ -358,6 +361,7 @@
 											<li><a href="{% url 'carousel_list' %}">轮播列表</a></li>
 										</ul>
 									</li>
+                                    {% endif %}
 								</ul>
 							</div>
 						</div>

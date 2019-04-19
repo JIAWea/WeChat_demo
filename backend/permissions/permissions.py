@@ -15,6 +15,7 @@ def change_permission(request,username,permissions):
             'info_manager',
             'reporting_manager',
             'repair_manager',
+            'carousel_manager',
         ]
 
         permissions = permissions.split(', ')
