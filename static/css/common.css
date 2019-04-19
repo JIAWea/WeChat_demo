@@ -2,3 +2,6 @@
     margin-right: 5px;
     border-radius: 10px !important;
 }
+.page-content-top .f-left{
+    float: left;
+}

@@ -2,18 +2,6 @@
 {% block title %}
     <title>关联用户管理</title>
     <style>
-        .b-group{
-            margin: 20px 0 20px 0;
-        }
-    </style>
-{% endblock %}
-
-{% block breadcrumb %}
-    <ol class="breadcrumb" style="font-size: 18px">
-        <li><a href="{% url 'index' %}">首页</a></li>
-        <li><a style="color: grey;font-size: 25px;" href="javascript:;">关联用户列表</a></li>
-    </ol>
-    <style>
         .xlsx-upload{
             /*display: none;*/
             position: absolute;
@@ -24,23 +12,42 @@
     </style>
 {% endblock %}
 
+{% block breadcrumb %}
+    <ol class="breadcrumb" style="font-size: 18px">
+        <li><a href="{% url 'index' %}">首页</a></li>
+        <li><a style="color: grey;font-size: 25px;" href="javascript:;">关联用户列表</a></li>
+    </ol>
+
+{% endblock %}
+
 {% block page-content %}
     <div>
-        <div class="btn-group pull-right b-group" >
-            <button id="checkAll" type="button" class="btn btn-default">全选</button>
-            <button id="reverselAll" type="button" class="btn btn-default">反选</button>
-            <button id="cancelAll" type="button" class="btn btn-default">取消</button>
-            <a id="importAll" type="button" class="btn btn-success" style="position: relative;">
-                <i class="fa fa-plus-square-o" aria-hidden="true"></i>&nbsp;
-                批量导入
-                <form action="" enctype="multipart/form-data" class="xlsx-upload" >
-                <input style="height:31px;width:89px" type="file" name="filexlsx" id="filexlsx" >
+        <div class="page-content-top clear">
+            <div class="searchbox f-left">
+                <form class="input-group custom-search-form">
+                    <input type="text" class="form-control" placeholder="可按公司名称、用户名搜索">
+                    <span class="input-group-btn">
+{#                        <button class="text-muted" type="button"><i class="fa fa-search"></i></button>#}
+                        <input type="submit" class="searchbtn text-muted searchbtn" value="">
+                    </span>
+                    <span><i class="fa fa-search searchimg"></i></span>
                 </form>
-            </a>
+            </div>
+            <div class="btn-group b-group f-left pull-right" >
+                <button id="checkAll" type="button" class="btn btn-default">全选</button>
+                <button id="reverselAll" type="button" class="btn btn-default">反选</button>
+                <button id="cancelAll" type="button" class="btn btn-default">取消</button>
+                <a id="importAll" type="button" class="btn btn-success" style="position: relative;">
+                    <i class="fa fa-plus-square-o" aria-hidden="true"></i>&nbsp;
+                    批量导入
+                    <form action="" enctype="multipart/form-data" class="xlsx-upload" >
+                    <input style="height:31px;width:89px" type="file" name="filexlsx" id="filexlsx" >
+                    </form>
+                </a>
 
-            <button id="delBtn" type="button" class="btn btn-danger">删除</button>
+                <button id="delBtn" type="button" class="btn btn-danger">删除</button>
+            </div>
         </div>
-
         <table class="table table-striped">
             <thead id="table_th">
                 <tr>
@@ -59,7 +66,6 @@
                         <td>{{ superuser.company }}</td>
                         <td>{{ superuser.username }}</td>
                         <td>{{ superuser.phone }}</td>
-
                     </tr>
                 {% endfor %}
             </tbody>
