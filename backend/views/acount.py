@@ -9,6 +9,7 @@ from backend.permissions.check_permission import check_permission
 from django.views.decorators.csrf import csrf_exempt
 from WeChatPM.settings import USER_UP_XLSX
 from backend.xlsxHandler import xlsxHandler
+from django.db.models import Q
 
 
 # 后台用户登录
@@ -165,7 +166,14 @@ def users_delete(request):
 @check_permission('backend.user_manager')
 @login_required
 def superusers_list(request):
+    search_name = request.GET.get("q",'')
     superusers_all = SuperUser.objects.all().order_by('-id')
+    if search_name:
+        q = Q()
+        q.connector = 'OR'      # 模糊查询，可以查公司名称或用户名
+        q.children.append(('company__contains',search_name))
+        q.children.append(('username__contains',search_name))
+        superusers_all = superusers_all.filter(q)
     return render(request, 'superusers_list.html',{'superusers_all':superusers_all})
 
 # 企业关联用户删除

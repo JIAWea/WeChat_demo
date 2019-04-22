@@ -9,6 +9,11 @@
             top: -1px;
             opacity: 0;
         }
+    .searchbtn{
+        {#background: url("/static/img/search.png") no-repeat fixed center;#}
+        {#background-image: url("/static/img/search.png");#}
+        background:url("/static/img/search.png") no-repeat 100%;
+    }
     </style>
 {% endblock %}
 
@@ -25,14 +30,13 @@
         <div class="page-content-top clear">
             <div class="searchbox f-left">
                 <form class="input-group custom-search-form">
-                    <input type="text" class="form-control" placeholder="可按公司名称、用户名搜索">
+                    <input type="text" name="q" class="form-control" placeholder="可按公司名称、用户名搜索">
                     <span class="input-group-btn">
-{#                        <button class="text-muted" type="button"><i class="fa fa-search"></i></button>#}
-                        <input type="submit" class="searchbtn text-muted searchbtn" value="">
+                        <button class="text-muted" type="submit"><i class="fa fa-search"></i></button>
                     </span>
-                    <span><i class="fa fa-search searchimg"></i></span>
                 </form>
             </div>
+
             <div class="btn-group b-group f-left pull-right" >
                 <button id="checkAll" type="button" class="btn btn-default">全选</button>
                 <button id="reverselAll" type="button" class="btn btn-default">反选</button>

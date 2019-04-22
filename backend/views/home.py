@@ -15,6 +15,7 @@ from backend.modelForm.infomationForm import infomationForm
 # 后台首页
 @login_required
 def index(request):
+    # print(request.META)
     return render(request, 'index.html',)
 
 # 文章列表
